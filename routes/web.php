@@ -38,6 +38,11 @@ Route::middleware('guest')->group(function () {
     // Etapa 4: Finalização do registro
     Route::get('registration/complete', [RegistrationController::class, 'showComplete'])->name('registration.complete');
     Route::post('registration/complete', [RegistrationController::class, 'complete']);
+
+    //Rota para exibir a tela inicial
+    Route::get('welcome', function () {
+        return view('welcome');
+    });
 });
 
 require __DIR__.'/auth.php';

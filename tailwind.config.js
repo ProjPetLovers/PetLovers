@@ -11,9 +11,16 @@ export default {
 
     theme: {
         extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            colors: {
+                primary: '#f28a49', // laranja vibrante
+                light: '#f7e3b2', // creme claro
+                secondary: '#e3967d', // pêssego suave
+                dark: '#57342d', // marrom escuro
+                accent: '#9dbfa4', // verde água suave
             },
+            // fontFamily: {
+            //     sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            // },
         },
     },
 

@@ -9,7 +9,7 @@ class Conexao extends Model
 {
     use HasFactory;
 
-    protected $table = 'conexao',
+    protected $table = 'conexao';
 
     protected $primaryKey = 'id_conexao';
 
@@ -18,6 +18,7 @@ class Conexao extends Model
         'usuario2_id',
         'pedido_em',
         'status'
+    ];
 
     public function usuario1(){
          return $this->belongsTo(User::class, 'usuario1_id', 'id');
@@ -27,11 +28,4 @@ class Conexao extends Model
     }
 
 
-
-
-
-
-
-
-    ]
 }

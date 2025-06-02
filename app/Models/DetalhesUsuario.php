@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Models;
 
-class DetalhesUsuario extends Models
+class DetalhesUsuario extends Model
 {
     /* @use HasFactory<\Database\Factories\UserFactory> */
         use HasFactory;
 
-        protected $table = 'detalhes_usuario',
+        protected $table = 'detalhes_usuario';
 
         protected $fillable = [
             'nome',
