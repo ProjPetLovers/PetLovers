@@ -48,8 +48,8 @@
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
 
                 <a href="{{ route('register') }}"
-                   class="px-6 py-3 bg-secondary text-light rounded-md
-                          hover:bg-secondary/90 transition w-full sm:w-auto text-center">
+                   class="px-6 py-3 border border-primary text-primary rounded-md
+                          hover:bg-primary hover:text-light transition w-full sm:w-auto text-center">
                     Criar Conta
                 </a>
 
