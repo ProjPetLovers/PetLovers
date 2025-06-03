@@ -13,7 +13,7 @@
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center space-x-8">
                     <a href="{{ url('/') }}" class="flex items-center">
-                        <img src="{{ asset('logo.png') }}" alt="Logo Pet Lovers" class="h-8 w-auto">
+                        <img src="{{ asset('imagem/logo.png') }}" alt="Logo Pet Lovers" class="h-8 w-auto">
                         <span class="ml-2 text-light font-semibold text-xl">Pet Lovers</span>
                     </a>
                 </div>
