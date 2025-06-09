@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -37,6 +38,8 @@
 
 
 {{-- resources/views/layouts/app.blade.php --}}
+=======
+>>>>>>> 3f83fa37a88d24d6d1439a4e0536eb2468aff9e1
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -62,6 +65,7 @@
                     <div class="flex justify-between items-center h-16">
                         {{-- Logo / Nome da App --}}
                         <div class="flex-shrink-0">
+<<<<<<< HEAD
                          
                         <a href="{{ route('home') }}"
                                class="text-light font-bold text-xl hover:text-primary transition-colors duration-200">
@@ -69,13 +73,31 @@
                             </a>
 
 
+=======
+                            {{-- <a href="{{ route('home') }}"
+                               class="text-light font-bold text-xl hover:text-primary transition-colors duration-200">
+                                {{ config('app.name', 'Laravel') }}
+                            </a> --}}
+>>>>>>> 3f83fa37a88d24d6d1439a4e0536eb2468aff9e1
                         </div>
                         {{-- Links --}}
                         <div class="hidden sm:flex sm:space-x-6">
-                            <a href="{{ route('home') }}"
+                            {{-- <a href="{{ route('home') }}"
                                class="text-light hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
                                 Início
+                            </a> --}}
+                            <form method="POST" action="{{ route('logout') }}" class="text-light hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Sair') }}
+                            </x-dropdown-link>
+                        </form>
+
                             </a>
+<<<<<<< HEAD
 
 
                             <a href="{{ route('about') }}"
@@ -83,9 +105,12 @@
                                 Sobre
                             </a>
                             <a href="{{ route('contact') }}"
+=======
+                            {{-- <a href="{{ route('contact') }}"
+>>>>>>> 3f83fa37a88d24d6d1439a4e0536eb2468aff9e1
                                class="text-light hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
                                 Contato
-                            </a>
+                            </a> --}}
                         </div>
                         {{-- Botão mobile (exemplo simplificado) --}}
                         <div class="sm:hidden">
