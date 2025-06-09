@@ -35,6 +35,7 @@
     </body>
 </html> --}}
 
+
 {{-- resources/views/layouts/app.blade.php --}}
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -61,10 +62,13 @@
                     <div class="flex justify-between items-center h-16">
                         {{-- Logo / Nome da App --}}
                         <div class="flex-shrink-0">
-                            <a href="{{ route('home') }}"
+                         
+                        <a href="{{ route('home') }}"
                                class="text-light font-bold text-xl hover:text-primary transition-colors duration-200">
                                 {{ config('app.name', 'Laravel') }}
                             </a>
+
+
                         </div>
                         {{-- Links --}}
                         <div class="hidden sm:flex sm:space-x-6">
@@ -72,6 +76,8 @@
                                class="text-light hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
                                 Início
                             </a>
+
+
                             <a href="{{ route('about') }}"
                                class="text-light hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
                                 Sobre
