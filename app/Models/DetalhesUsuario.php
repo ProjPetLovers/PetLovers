@@ -12,8 +12,10 @@ class DetalhesUsuario extends Model
         use HasFactory;
 
         protected $table = 'detalhes_usuario';
+        protected $primaryKey = 'id_detalhes_usuario';
+    public $timestamps = false;
 
-        protected $fillable = [
+    protected $fillable = [
             'nome',
             'apelido',
             'bio',

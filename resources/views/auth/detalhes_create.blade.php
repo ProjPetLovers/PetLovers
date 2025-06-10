@@ -67,7 +67,7 @@
 
             <!-- Bio -->
             <div class="mt-6">
-                <x-input-label for="bio" :value="__('Bio (Opcional)')" />
+                <x-input-label for="bio" :value="__('Bio')" />
                 <textarea id="bio" name="bio" rows="4"
                          class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
                          placeholder="Conte um pouco sobre você...">{{ old('bio') }}</textarea>
@@ -78,7 +78,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                 <!-- Foto de Perfil -->
                 <div>
-                    <x-input-label for="foto" :value="__('Foto de Perfil (Opcional)')" />
+                    <x-input-label for="foto" :value="__('Foto de Perfil')" />
                     <input id="foto" class="block mt-1 w-full" type="file" name="foto"
                            accept="image/jpeg,image/png,image/jpg,image/gif" />
                     <x-input-error :messages="$errors->get('foto')" class="mt-2" />
@@ -87,7 +87,7 @@
 
                 <!-- Foto de Fundo -->
                 <div>
-                    <x-input-label for="photo_fundo" :value="__('Foto de Fundo (Opcional)')" />
+                    <x-input-label for="photo_fundo" :value="__('Foto de Fundo')" />
                     <input id="photo_fundo" class="block mt-1 w-full" type="file" name="photo_fundo"
                            accept="image/jpeg,image/png,image/jpg,image/gif" />
                     <x-input-error :messages="$errors->get('photo_fundo')" class="mt-2" />
