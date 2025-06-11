@@ -9,7 +9,7 @@ use App\Http\Controllers\RegistrationController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -20,8 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // Rota para exibir a tela do perfil do usuário
-   Route::get('/perfil', [ProfileController::class, 'show'])->name('profile.show');
-   // Novas rotas para editar detalhes do perfil e remover foto
+    Route::get('/perfil', [ProfileController::class, 'show'])->name('profile.show');
+    // Novas rotas para editar detalhes do perfil e remover foto
     Route::get('/perfil/editar', [ProfileController::class, 'editDetails'])->name('profile.edit-details');
     Route::put('/perfil/atualizar', [ProfileController::class, 'updateDetails'])->name('profile.update-details');
     Route::delete('/perfil/foto', [ProfileController::class, 'removePhoto'])->name('profile.remove-photo');
@@ -48,13 +48,10 @@ Route::middleware('guest')->group(function () {
     // Etapa 4: Finalização do registro
     Route::get('registration/complete', [RegistrationController::class, 'showComplete'])->name('registration.complete');
     Route::post('registration/complete', [RegistrationController::class, 'complete']);
+});
 
-    //Rota para exibir a tela inicial
-    Route::get('/', function () {
-        return view('welcome')})->name('welcome');
+Route::get('about', function () {
+    return view('about');
+})->name('about');
 
-    Route::get('about', function () {
-        return view('about');
-    })->name('about');
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
