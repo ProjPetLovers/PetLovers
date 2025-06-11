@@ -1,4 +1,4 @@
-?>
+
 <x-guest-layout>
     <div class="max-w-2xl mx-auto">
         <div class="mb-6">

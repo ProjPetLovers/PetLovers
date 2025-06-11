@@ -50,10 +50,11 @@ Route::middleware('guest')->group(function () {
     Route::post('registration/complete', [RegistrationController::class, 'complete']);
 
     //Rota para exibir a tela inicial
-    Route::get('welcome', function () {
-        return view('welcome');
-    });
+    Route::get('/', function () {
+        return view('welcome')})->name('welcome');
 
-});
+    Route::get('about', function () {
+        return view('about');
+    })->name('about');
 
 require __DIR__.'/auth.php';
