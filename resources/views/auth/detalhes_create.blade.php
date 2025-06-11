@@ -65,8 +65,8 @@
             </div>
 
             <!-- Bio -->
-            <div>
-                <x-input-label for="bio" :value="__('Bio (Opcional)')"class="!text-dark" />
+            <div class="mt-6">
+                <x-input-label for="bio" :value="__('Bio')" />
                 <textarea id="bio" name="bio" rows="4"
                          class="block mt-1 w-full bg-[#f6e6aa] border-[#e5a04b] rounded-md shadow-sm"
                          placeholder="Conte um pouco sobre você...">{{ old('bio') }}</textarea>

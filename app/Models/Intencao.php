@@ -15,4 +15,9 @@ class Intencao extends Model
         protected $fillable = [
             'descricao',
         ];
+
+        public function detalhesUsuarios()
+{
+    return $this->hasMany(DetalhesUsuario::class, 'cod_intencao', 'cod_intencao');
+}
 }

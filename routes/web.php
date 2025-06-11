@@ -19,6 +19,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Rota para exibir a tela do perfil do usuário
+   Route::get('/perfil', [ProfileController::class, 'show'])->name('profile.show');
+   // Novas rotas para editar detalhes do perfil e remover foto
+    Route::get('/perfil/editar', [ProfileController::class, 'editDetails'])->name('profile.edit-details');
+    Route::put('/perfil/atualizar', [ProfileController::class, 'updateDetails'])->name('profile.update-details');
+    Route::delete('/perfil/foto', [ProfileController::class, 'removePhoto'])->name('profile.remove-photo');
+    // Perfil de qualquer usuário pelo id
+    Route::get('/perfil/{id}', [ProfileController::class, 'showUser'])->name('profile.user');
+    //Lista de usuários
+    Route::get('/usuarios', [ProfileController::class, 'index'])->name('usuarios');
 });
 
 // Rotas de registro em etapas (apenas para usuários não autenticados)
@@ -41,12 +51,10 @@ Route::middleware('guest')->group(function () {
 
     //Rota para exibir a tela inicial
     Route::get('/', function () {
-        return view('welcome');
-    })->name('welcome');
+        return view('welcome')})->name('welcome');
 
     Route::get('about', function () {
         return view('about');
     })->name('about');
-});
 
 require __DIR__.'/auth.php';

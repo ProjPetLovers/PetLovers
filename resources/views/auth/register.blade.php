@@ -77,6 +77,7 @@
                         Já tenho registro
                     </a>
                     <button type="submit"
+
                         class="px-6 py-2 bg-secondary text-light rounded-md hover:bg-secondary/90 transition">
                         Continuar
                     </button>
