@@ -54,4 +54,6 @@ Route::get('about', function () {
     return view('about');
 })->name('about');
 
+Route::get('usuario_conexao', [ProfileController::class, 'usuarioConexao'])->name('usuario_conexao');
+
 require __DIR__ . '/auth.php';
