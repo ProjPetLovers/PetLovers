@@ -137,9 +137,21 @@
                                             <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
                                         </div>
                                         
+                                        
                                         <!-- Informações do Pet -->
                                         <div class="p-4">
                                             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{{ $pet['nome'] }}</h3>
+
+                                             <div class="space-y-2 text-sm">
+                                                @if(isset($pet['bio']) && $pet['bio'])
+                                                    <div class="flex items-center">
+                                                        <span class="font-medium text-gray-600 dark:text-gray-400 w-20">Bio:</span>
+                                                        <span class="text-gray-900 dark:text-white">{{ $pet['bio'] }}</span>
+                                                    </div>
+                                                @endif
+<p></p>
+                                                
+</div>
                                             
                                             <div class="space-y-2 text-sm">
                                                 <div class="flex items-center">
