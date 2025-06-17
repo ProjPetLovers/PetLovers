@@ -322,6 +322,7 @@ class ProfileController extends Controller
                 $q->where('nome', 'like', '%' . $request->nome . '%');
             });
         }
+
         if ($request->filled('email')) {
             $query->where('email', 'like', '%' . $request->email . '%');
         }
