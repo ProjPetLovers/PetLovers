@@ -56,4 +56,5 @@ public function Pet()
     return $this->hasMany(Pet::class, 'usuario_id');
 }
 
+
 }
