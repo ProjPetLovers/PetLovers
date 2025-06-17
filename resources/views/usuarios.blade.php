@@ -187,8 +187,8 @@
 
                                 <div class="text-white flex-1">
                                     <h2 class="text-xl font-bold">{{ $detalhes?->nome ?? $usuario->name }}</h2>
-                                    <p class="text-sm opacity-90">{{ $usuario->email }}</p>
-                                    @if ($detalhes?->localizacao)
+                                    <p></p>
+                                    @if($detalhes?->localizacao)
                                         <p class="text-xs opacity-75 flex items-center mt-1">
                                             <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
                                                 <path
@@ -297,41 +297,53 @@
                         <div class="p-4">
                             <!-- Tags/Badges -->
                             <div class="flex flex-wrap gap-2 mb-3">
-                                @if (is_object($detalhes->cod_intencao) && isset($detalhes->cod_intencao->descricao))
-                                    <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#f7e3b2] text-[#57342d]">
-                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 6L12 10.5 8.5 8 12 5.5 15.5 8zM12 13.5L8.5 16 12 18.5 15.5 16 12 13.5z" />
-                                        </svg>
-                                        {{ $detalhes->cod_intencao->descricao }}
-                                    </span>
-                                @elseif(is_numeric($detalhes->cod_intencao))
-                                    <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#f7e3b2] text-[#57342d]">
-                                        Intenção não encontrada
-                                    </span>
-                                @else
-                                    <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#f7e3b2] text-[#57342d]">
-                                        Sem intenção
-                                    </span>
-                                @endif
+                             @if(is_numeric($detalhes->cod_intencao))
+    @php
+        $descricao = '';
+        switch($detalhes->cod_intencao) {
+            case 1:
+                $descricao = 'Namoro';
+                break;
+            case 2:
+                $descricao = 'Amizade';
+                break;
+            case 3:
+                $descricao = 'Passeio';
+                break;
+            default:
+                $descricao = 'Intenção não encontrada';
+        }
+    @endphp
+    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#f7e3b2] text-[#57342d]">
+        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 6L12 10.5 8.5 8 12 5.5 15.5 8zM12 13.5L8.5 16 12 18.5 15.5 16 12 13.5z"/>
+        </svg>
+        {{ $descricao }}
+    </span>
+@else
+    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#f7e3b2] text-[#57342d]">
+        Sem intenção
+    </span>
+@endif
 
-                                @if ($pet)
-                                    <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#9dbfa4] text-white">
-                                        <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M4.5 12.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5S6.83 11 6 11s-1.5.67-1.5 1.5zM9 16c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5S11.33 14.5 10.5 14.5 9 15.17 9 16z" />
-                                        </svg>
-                                        {{ $pet->especie }}
-                                    </span>
-                                @endif
 
-                                @if ($detalhes?->socializa_com)
-                                    <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#f28a49] text-white">
+                                @if($pets && count($pets) > 0)
+    @foreach($pets as $pet)
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#9dbfa4] text-white">
+            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M4.5 12.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5S6.83 11 6 11s-1.5.67-1.5 1.5zM9 16c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5S11.33 14.5 10.5 14.5 9 15.17 9 16z"/>
+            </svg>
+            {{ $pet->especie }}
+        </span>
+    @endforeach
+@else
+    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#9dbfa4] text-white">
+        Nenhum pet encontrado
+    </span>
+@endif
+
+                                @if($detalhes?->socializa_com)
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#f28a49] text-white">
                                         <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
                                             <path
                                                 d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63c-.24-.74-.9-1.27-1.71-1.27h-5.5c-.8 0-1.47.53-1.71 1.27L9 16h2.5v6h8z" />
