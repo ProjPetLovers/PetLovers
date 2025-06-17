@@ -82,7 +82,7 @@ class ProfileController extends Controller
         // Processa pets do usuário
         $pets = $this->processPetsData($user->Pet ?? collect());
 
-        
+
         return view('perfil', compact('userData', 'pets', 'intencao'));
     }
 
@@ -123,7 +123,7 @@ class ProfileController extends Controller
                 'idade' => $pet->data_nascimento ? Carbon::parse($pet->data_nascimento)->age : null,
                 'castrado' => $pet->castrado ? 'Sim' : 'Não',
                 'foto_url' => $this->processImageUrl($pet->foto),
-                'bio' => $pet->bio,                
+                'bio' => $pet->bio,
             ];
         });
     }
@@ -316,8 +316,8 @@ class ProfileController extends Controller
 
     public function index(Request $request)
     {
-         $query = \App\Models\User::with(['DetalhesUsuario', 'DetalhesUsuario.cod_intencao', 'Pet', 'Pet.socializaCom'])
-    ->whereNot('id', Auth::id());
+        $query = \App\Models\User::with(['DetalhesUsuario', 'DetalhesUsuario.cod_intencao', 'Pet', 'Pet.socializaCom'])
+            ->whereNot('id', Auth::id());
 
         // Filtros
         if ($request->filled('nome')) {
@@ -326,8 +326,17 @@ class ProfileController extends Controller
             });
         }
 
-        if ($request->filled('email')) {
-            $query->where('email', 'like', '%' . $request->email . '%');
+        if ($request->filled('conexao')) {
+            $query->join('conexao', function ($join) {
+                $join->on('users.id', '=', 'conexao.usuario1_id')
+                    ->orOn('users.id', '=', 'conexao.usuario2_id');
+            })
+                ->where('conexao.status', '=', $request->conexao)
+                ->where(function ($q) {
+                    $q->where('conexao.usuario1_id', '=', Auth::id())
+                        ->orWhere('conexao.usuario2_id', '=', Auth::id());
+                });
+
         }
 
         if ($request->filled('localizacao')) {

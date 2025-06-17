@@ -57,16 +57,4 @@ public function Pet()
 }
 
 
-public function conexaoAceita()
-{
-    return $this->hasMany(Conexao::class, 'usuario2_id');
-}
-
-// Conexões pendentes do usuário (onde ele é o usuario2)
-public function conexaoPendente()
-{
-    return $this->hasMany(Conexao::class, 'usuario1_id');
-}
-
-
 }
