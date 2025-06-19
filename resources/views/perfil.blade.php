@@ -106,26 +106,50 @@
                                         </svg>
                                         <span class="text-gray-700 dark:text-gray-300">{{ $userData['email'] }}</span>
                                     </div>
+                                    
                                 </div>
+                                
                             </div>
+                                               <!-- Botões de Ação -->
+                    <div class="mt-8 flex flex-wrap gap-4 justify-center">
+    <a href="{{ route('profile.edit-details') }}" 
+       class="inline-flex items-center px-6 py-3 bg-[#e3967d] hover:bg-[#8dafa0] text-white font-medium rounded-lg transition duration-150 ease-in-out" title:"Editar perfil">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+        </svg>
+        Editar Perfil
+    </a>
+                        
+                     
+                    </div>
                         </div>
 
                         <!-- Coluna da Direita - Pets -->
                         <div class="lg:col-span-2">
-                            <div class="mb-6">
-                                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
-                                    <svg class="w-6 h-6 mr-2 text-[#f28a49]" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M4.5 12.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5S6.83 11 6 11s-1.5.67-1.5 1.5zM9 16c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5S11.33 14.5 10.5 14.5 9 15.17 9 16zm4.5-3c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zM16 7c0 .83.67 1.5 1.5 1.5S19 7.83 19 7s-.67-1.5-1.5-1.5S16 6.17 16 7zM7 7c0 .83.67 1.5 1.5 1.5S10 7.83 10 7s-.67-1.5-1.5-1.5S7 6.17 7 7z"/>
-                                    </svg>
-                                    Meus Pets
-                                </h2>
-                            </div>
+                            <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center mb-2 sm:mb-0">
+        <svg class="w-6 h-6 mr-2 text-[#f28a49]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M4.5 12.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5S6.83 11 6 11s-1.5.67-1.5 1.5zM9 16c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5S11.33 14.5 10.5 14.5 9 15.17 9 16zm4.5-3c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zM16 7c0 .83.67 1.5 1.5 1.5S19 7.83 19 7s-.67-1.5-1.5-1.5S16 6.17 16 7zM7 7c0 .83.67 1.5 1.5 1.5S10 7.83 10 7s-.67-1.5-1.5-1.5S7 6.17 7 7z"/>
+        </svg>
+        Meus Pets
+    </h2>
+
+    <a href="{{ route('profile.pet.create') }}"
+       class="text-white bg-[#f28a49] hover:bg-[#8dafa0] p-2 rounded-full transition duration-150 ease-in-out"
+       title="Adicionar novo pet">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 4v16m8-8H4"/>
+        </svg>
+    </a>
+</div>
 
                             <!-- Grid de Pets -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 @forelse($pets as $pet)
                                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden border border-gray-200 dark:border-gray-700">
                                         <!-- Foto do Pet -->
+                                         
                                         <div class="aspect-square bg-gray-100 dark:bg-gray-600 relative">
                                             @if($pet['foto_url'])
                                                 <img 
@@ -185,6 +209,23 @@
                                                     <span class="font-medium text-gray-600 dark:text-gray-400 w-20">Castrado:</span>
                                                     <span class="text-gray-900 dark:text-white">{{ $pet['castrado'] }}</span>
                                                 </div>
+
+                                                <div class="flex justify-end gap-2 mt-4">
+    <a href="{{ route('profile.pet.edit', ['id' => $pet['id']]) }}"
+   class="hover:text-red-800" style="color: #e3967d;"
+   title="Editar pet">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5M16.414 3.586a2 2 0 112.828 2.828L12.828 13H10v-2.828l6.414-6.414z"/>
+    </svg>
+</a>
+
+    <form action="{{ route('profile.pet.destroy', ['id' => $pet['id']]) }}" method="POST" data-confirm="true"> 
+        @csrf @method('DELETE') <button type="submit" class="text-red-500 hover:text-red-800" 
+        title="Excluir pet"> <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m-3-3v3"/>
+             </svg> </button> </form>
+</div>
                                             </div>
                                         </div>
                                     </div>
@@ -201,24 +242,7 @@
                         </div>
                     </div>
 
-                    <!-- Botões de Ação -->
-                    <div class="mt-8 flex flex-wrap gap-4 justify-center">
-    <a href="{{ route('profile.edit-details') }}" 
-       class="inline-flex items-center px-6 py-3 bg-[#e3967d] hover:bg-[#8dafa0] text-white font-medium rounded-lg transition duration-150 ease-in-out">
-        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-        </svg>
-        Editar Perfil
-    </a>
-                        
-                        <a href="{{ route('dashboard') }}" 
-                           class="inline-flex items-center px-6 py-3 bg-[#f28a49] hover:bg-[#8dafa0] text-white font-medium rounded-lg transition duration-150 ease-in-out">
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                            </svg>
-                            Adicionar Pet
-                        </a>
-                    </div>
+ 
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Pet extends Model
 {
@@ -13,6 +14,8 @@ class Pet extends Model
         protected $table = 'pet';
 
         protected $primaryKey = 'id_pet';
+
+        public $timestamps = false;
 
         protected $fillable = [
             'usuario_id',

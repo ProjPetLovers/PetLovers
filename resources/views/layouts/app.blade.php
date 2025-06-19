@@ -17,6 +17,7 @@
 </head>
 {{-- Corpo com fundo claro ("light") e texto principal escuro ("dark") --}}
 
+
 <body class="font-sans antialiased bg-light text-dark">
     <div class="min-h-screen">
         {{-- Navegação --}}
@@ -116,6 +117,14 @@
         </div>
     </main>
     </div>
+    <!-- SweetAlert2 CDN --> 
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <!-- Script para confirmação de exclusão --> 
+      <script> document.addEventListener('DOMContentLoaded', function () { const deleteForms = document.querySelectorAll('form[data-confirm="true"]');
+        deleteForms.forEach(function (form) { form.addEventListener('submit', function (e) { e.preventDefault(); Swal.fire({ title: 'Tem certeza?', 
+        text: 'Essa ação não poderá ser desfeita!', icon: 'warning', showCancelButton: true, confirmButtonColor: '#e3967d', cancelButtonColor: '#d33', 
+        confirmButtonText: 'Sim, excluir', cancelButtonText: 'Cancelar' }).then((result) => { if (result.isConfirmed) { form.submit(); } }); }); }); }); 
+        </script>
 
 </body>
 
