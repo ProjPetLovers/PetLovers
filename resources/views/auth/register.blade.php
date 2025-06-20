@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registo - Pet Lovers</title>
+    <title>Registro - Pet Lovers</title>
     @vite('resources/css/app.css')
 </head>
 
@@ -16,7 +16,9 @@
                 <div class="flex items-center space-x-8">
                     <a href="{{ url('/') }}" class="flex items-center">
                         <img src="{{ asset('imagem/logo.png') }}" alt="Logo Pet Lovers" class="h-8 w-auto">
-                        <span class="ml-2 text-light font-semibold text-xl">Pet Lovers</span>
+                        <a href="{{ route('about') }}" class="text-light hover:text-primary transition-colors duration-200">
+                        Sobre nós
+                    </a>
                     </a>
                 </div>
                 <div>

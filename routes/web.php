@@ -6,13 +6,14 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\DetalhesController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\RegistrationController;
+use App\Models\Pet;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
 Route::get('/dashboard', function () {
-    return redirect()-> route('usuarios');
+    return redirect()->route('usuarios');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -29,6 +30,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/perfil/{id}', [ProfileController::class, 'showUser'])->name('profile.user');
     //Lista de usuários
     Route::get('/usuarios', [ProfileController::class, 'index'])->name('usuarios');
+    //Rota para criar um novo pet
+    Route::get('profile/pet/create', [PetController::class, 'createForProfile'])->name('profile.pet.create');
+    //Rota para armazenar os dados do pet
+    Route::post('/profile/pet/store', [PetController::class, 'storeForProfile'])->name('profile.pet.storeForProfile');
+    //Rota para editar os dados do pet
+    Route::get('/profile/pet/{id}/edit', [PetController::class, 'edit'])->name('profile.pet.edit');
+    //Rota para atualizar os dados do pet
+    Route::put('/profile/pet/{id}', [PetController::class, 'update'])->name('profile.pet.update');
+    // Rota para deletar pet
+    Route::delete('/profile/pet/{id}', [PetController::class, 'destroy'])->name('profile.pet.destroy');
 });
 
 // Rotas de registro em etapas (apenas para usuários não autenticados)

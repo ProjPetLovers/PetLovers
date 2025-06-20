@@ -218,7 +218,15 @@
 
                         <!-- Botões de Ação -->
                         <div class="flex flex-wrap gap-4 justify-center pt-6 border-t border-gray-200 dark:border-gray-600">
-                            <button 
+                            
+                        <a href="{{ route('profile.show') }}" 
+                               class="inline-flex items-center px-6 py-3 bg-gray-500 hover:bg-gray-600 text-white font-medium rounded-lg transition duration-150 ease-in-out">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                                Cancelar
+                            </a>
+                        <button 
                                 type="submit" 
                                 class="inline-flex items-center px-6 py-3 bg-[#e3967d] hover:bg-[#d68a6a] text-white font-medium rounded-lg transition duration-150 ease-in-out"
                             >
@@ -228,14 +236,11 @@
                                 Salvar Alterações
                             </button>
                             
-                            <a href="{{ route('profile.show') }}" 
-                               class="inline-flex items-center px-6 py-3 bg-gray-500 hover:bg-gray-600 text-white font-medium rounded-lg transition duration-150 ease-in-out">
-                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                                Cancelar
-                            </a>
+                            
+
+                         
                         </div>
+
                     </form>
                 </div>
             </div>

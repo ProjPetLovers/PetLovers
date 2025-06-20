@@ -114,7 +114,7 @@ class ProfileController extends Controller
     {
         return $pets->map(function ($pet) {
             return [
-                'id' => $pet->id,
+                'id' => $pet->id_pet,
                 'nome' => $pet->nome,
                 'especie' => $pet->especie,
                 'raca' => $pet->raca,
