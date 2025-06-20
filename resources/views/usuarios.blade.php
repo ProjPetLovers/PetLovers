@@ -7,7 +7,7 @@
                 <div class="relative p-8" style="background: linear-gradient(to right, #e3967d, #f28a49);">
                     <div class="text-center text-white">
                         <h1 class="text-4xl font-bold mb-2 flex items-center justify-center">
-                            <img src="{{ asset('imagem/logo.png') }}" alt="Logo" class="w-20 h-30 mr-3" />
+                            {{-- <img src="{{ asset('imagem/logo.png') }}" alt="Logo" class="w-20 h-30 mr-3" /> --}}
                             Comunidade Pet
                         </h1>
                         <p class="text-xl opacity-90">Conecte-se com outros amantes de pets</p>

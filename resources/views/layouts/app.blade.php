@@ -15,8 +15,6 @@
     <!-- Tailwind + JS (via Vite) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-{{-- Corpo com fundo claro ("light") e texto principal escuro ("dark") --}}
-
 
 <body class="font-sans antialiased bg-light text-dark">
     <div class="min-h-screen">
@@ -24,34 +22,27 @@
         <nav class="bg-dark border-b border-secondary">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16">
-
                     {{-- Logo / Nome da App --}}
-                    <div class="flex-shrink-0">
-
-
+                    <div class="flex-shrink-0"> <x-application-logo
+                            class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                     </div>
 
                     {{-- Links --}}
                     <div class="hidden sm:flex sm:space-x-6">
-
-                        <form method="POST" action="{{ route('logout') }}"
-                            class="text-light hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
+                        <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                onclick="event.preventDefault(); this.closest('form').submit();"
+                                class="px-4 py-2 border border-primary text-primary hover:bg-primary hover:text-light rounded-md transition">
                                 {{ __('Sair') }}
                             </x-dropdown-link>
                         </form>
-
-
                     </div>
-                    {{-- Botão mobile (exemplo simplificado) --}}
+
+                    {{-- Botão mobile --}}
                     <div class="sm:hidden">
                         <button type="button"
                             class="text-light hover:text-primary focus:outline-none focus:ring-2 focus:ring-secondary rounded-md">
-                            {{-- ícone de menu (pode ser um svg) --}}
                             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M4 6h16M4 12h16M4 18h16" />
@@ -59,73 +50,31 @@
                         </button>
                     </div>
                 </div>
-
             </div>
-            {{-- Links --}}
-            <div class="hidden sm:flex sm:space-x-6">
+        </nav>
 
-                <form method="POST" action="{{ route('logout') }}"
-                    class="text-light hover:text-primary px-3 py-2 rounded-md text-sm font-medium">
-                    @csrf
+        {{-- Cabeçalho da página (opcional) --}}
+        {{--
+        @isset($header)
+            <header class="bg-primary shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <h1 class="text-light text-2xl font-semibold leading-tight">
+                        {{ $header }}
+                    </h1>
+                </div>
+            </header>
+        @endisset
+        --}}
 
-                    <x-dropdown-link :href="route('logout')"
-                        onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                        {{ __('Sair') }}
-                    </x-dropdown-link>
-                </form>
-
-
+        {{-- Conteúdo principal --}}
+        <main class="{{ isset($header) ? 'py-6' : 'py-0' }} mt-0">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white border border-secondary rounded-lg shadow-sm p-6">
+                    {{ $slot }}
+                </div>
             </div>
-            {{-- Botão mobile (exemplo simplificado) --}}
-            <div class="sm:hidden">
-                <button type="button"
-                    class="text-light hover:text-primary focus:outline-none focus:ring-2 focus:ring-secondary rounded-md">
-                    {{-- ícone de menu (pode ser um svg) --}}
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-            </div>
+        </main>
     </div>
-    </div>
-    </nav>
-
-    {{-- Cabeçalho da página (opcional) --}}
-    @isset($header)
-        {{-- Aqui usamos "primary" como fundo do header e texto light --}}
-        <header class="bg-primary shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-light text-2xl font-semibold leading-tight">
-                    {{ $header }}
-                </h1>
-            </div>
-        </header>
-    @endisset
-
-    {{-- Conteúdo principal --}}
-    <main class="py-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-            {{-- Exemplo de cartão de conteúdo com borda "secondary" e sombra suave --}}
-            <div class="bg-white border border-secondary rounded-lg shadow-sm p-6">
-
-                {{-- Aqui, o "$slot" renderiza todo o conteúdo da view-filho --}}
-                {{ $slot }}
-            </div>
-        </div>
-    </main>
-    </div>
-    <!-- SweetAlert2 CDN --> 
-     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-     <!-- Script para confirmação de exclusão --> 
-      <script> document.addEventListener('DOMContentLoaded', function () { const deleteForms = document.querySelectorAll('form[data-confirm="true"]');
-        deleteForms.forEach(function (form) { form.addEventListener('submit', function (e) { e.preventDefault(); Swal.fire({ title: 'Tem certeza?', 
-        text: 'Essa ação não poderá ser desfeita!', icon: 'warning', showCancelButton: true, confirmButtonColor: '#e3967d', cancelButtonColor: '#d33', 
-        confirmButtonText: 'Sim, excluir', cancelButtonText: 'Cancelar' }).then((result) => { if (result.isConfirmed) { form.submit(); } }); }); }); }); 
-        </script>
-
 </body>
 
 </html>
