@@ -23,7 +23,7 @@
                     </a>
                     <a href="{{ route('welcome') }}"
                         class="text-light hover:text-primary transition-colors duration-200">
-                        Voltar à Página Inicial
+                        Voltar à página Inicial
                     </a>
                 </div>
 
@@ -44,22 +44,22 @@
         </div>
     </header>
 
-    <main class="flex-grow flex items-center justify-center">
-        <div class="text-center px-4">
+    <main class="flex-grow flex items-center justify-center px-4">
+        <div class="w-full max-w-4xl mx-auto text-center">
             <h1 class="text-4xl md:text-5xl font-bold text-dark mb-8">
                 Quem somos nós?
             </h1>
             <p class="text-lg text-gray-700 mb-6">
                 </h1>
 
-            <p class="text-lg mb-6 text-justify">
+            <p class="text-lg mb-6 text-justify leading-relaxed">
                 Bem-vindo ao Pet Lovers, a rede social que une apaixonados por animais e seus companheiros de quatro
                 patas.
                 Aqui, donos e pets encontram oportunidades de convivência, amizade e diversão em encontros presenciais e
                 virtuais, criando memórias inesquecíveis para todas as espécies.
             </p>
 
-            <p class="text-lg mb-6 text-justify">
+            <p class="text-lg mb-6 text-justify leading-relaxed">
                 Nossa plataforma oferece perfis personalizados para cada pet, onde é possível compartilhar fotos,
                 curiosidades
                 e preferências individuais. Com ferramentas de busca, você encontra facilmente companheiros de
@@ -71,7 +71,7 @@
                 e relatos inspiradores de amizades que se formaram a partir de um simples “olá”.
             </p>
 
-            <p class="text-lg text-justify">
+            <p class="text-lg mb-6 text-justify leading-relaxed">
                 Na Pet Lovers, acreditamos que o amor pelos animais pode transformar comunidades. Por isso, criamos um
                 ambiente
                 seguro e acolhedor, onde cada latido e cada miado são celebrados. Junte-se a nós e descubra novas formas
