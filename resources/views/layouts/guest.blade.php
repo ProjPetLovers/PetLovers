@@ -12,8 +12,15 @@
     <header class="bg-[#5A3624] text-white py-3 shadow">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <img src="/images/logo.png" alt="Pet Lovers" class="h-6"> <!-- Coloque o logo correto aqui -->
-                <span class="font-semibold text-lg">Pet Lovers</span>
+                <div class="flex items-center space-x-8">
+                    <a href="{{ url('/') }}" class="flex items-center space-x-2">
+                        <img src="{{ asset('imagem/logo.png') }}" alt="Logo Pet Lovers" class="h-8 w-auto">
+
+                    </a>
+                    <a href="{{ route('about') }}" class="text-white hover:text-[#f28a49] transition-colors duration-200">
+                        Sobre nós
+                    </a>
+                </div>
             </div>
             <a href="{{ route('login') }}" class="text-sm px-4 py-2 border border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white transition rounded">
                 Iniciar Sessão
