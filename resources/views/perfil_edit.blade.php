@@ -242,6 +242,36 @@
                         </div>
 
                     </form>
+                    <!-- Desativação de conta -->
+                                                                            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 col-span-full m-4">
+                                                                                <div class="flex justify-between items-center mb-4 w-full">
+
+                                                                                    <!-- Título com ícone -->
+                                                                                    <h3 class="flex items-center text-lg font-semibold text-gray-900 dark:text-white m-0">
+                                                                                        <svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                                                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                                                                        </svg>
+                                                                                        Desativar Conta
+                                                                                    </h3>
+
+                                                                                    <!-- Formulário com botão de desativar -->
+                                                                                    <form action="{{ route('profile.softDeleteAccount') }}" method="POST"
+                                                                                          onsubmit="return confirm('Tem certeza que deseja desativar sua conta? Esta ação não pode ser desfeita.');">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <button type="submit"
+                                                                                                class="inline-flex items-center px-4 py-2 border border-red-500 text-red-500 hover:bg-red-100 dark:hover:bg-red-800 font-medium rounded-lg transition duration-150 ease-in-out"
+                                                                                                title="Desativar Minha Conta">
+                                                                                            <!-- Ícone de banimento -->
+                                                                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                                                                      d="M18.364 5.636a9 9 0 11-12.728 0m12.728 0L5.636 18.364" />
+                                                                                            </svg>
+                                                                                            Desativar
+                                                                                        </button>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
                 </div>
             </div>
         </div>

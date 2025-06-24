@@ -40,6 +40,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile/pet/{id}', [PetController::class, 'update'])->name('profile.pet.update');
     // Rota para deletar pet
     Route::delete('/profile/pet/{id}', [PetController::class, 'destroy'])->name('profile.pet.destroy');
+    //Rota para softDelete de usuário
+    Route::delete('/perfil/desativar', [ProfileController::class, 'softDeleteAccount'])->name('profile.softDeleteAccount');
+
 });
 
 // Rotas de registro em etapas (apenas para usuários não autenticados)
