@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function () {
 
     // Rota para exibir o perfil do usuário após o registro    
     Route::get('usuario_conexao/{id}', [UsuarioConexaoController::class, 'usuarioConexao'])->name('usuario_conexao');
+    // Rota para solicitar conexão com outro usuário    
+    Route::post('/conexao/solicitar/{id}', [UsuarioConexaoController::class, 'solicitarConexao'])->name('conexao.solicitar');
 });
 
 // Rotas de registro em etapas (apenas para usuários não autenticados)

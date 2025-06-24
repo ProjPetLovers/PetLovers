@@ -59,4 +59,10 @@ public function Pet()
 }
 
 
+public function intencao()
+{
+    return $this->belongsTo(Intencao::class, 'cod_intencao', 'id');
+}
+
+
 }

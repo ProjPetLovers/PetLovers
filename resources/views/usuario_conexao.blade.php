@@ -1,9 +1,3 @@
-<div>
-    <a href="{{ route('usuario_conexao', ['id' => $user->id]) }}"
-        class="block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 transform hover:-translate-y-1">
-        Enviar Mensagem
-    </a>
-</div>
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -39,7 +33,7 @@
                             @if($userData['apelido'])
                             <p class="text-xl opacity-90">"{{ $userData['apelido'] }}"</p>
                             @endif
-                            <p class="text-lg opacity-75">{{ $userData['email'] }}</p>
+
                             @if($userData['localizacao'])
                             <p class="text-sm opacity-75 flex items-center justify-center md:justify-start mt-2">
                                 <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
@@ -72,16 +66,20 @@
                             </div>
                             @endif
 
+
+
                             <!-- Intenção -->
-                            @if($userData['bio'] && $intencao)
+                            @if($userData['bio'] && $intencao && isset($intencao->descricao))
                             <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
                                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                                    <svg ...></svg>
+
                                     Intenção
                                 </h3>
                                 <p class="text-gray-700 dark:text-gray-300">{{ $intencao->descricao }}</p>
                             </div>
                             @endif
+
+
 
                             <!-- Informações Pessoais -->
                             <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
@@ -103,25 +101,70 @@
                                         </span>
                                     </div>
                                     @endif
-                                    
+
                                 </div>
+
+
                             </div>
+
+                            <!-- Conexão e mensagem -->
+                            @if(auth()->check() && auth()->id() != $user->id)
+                            @if(!$conexao)
+                            <form method="POST" action="{{ route('conexao.solicitar', $user->id) }}">
+                                @csrf
+                                <button type="submit"
+                                    class="inline-flex items-center px-6 py-2 bg-[#8dafa0] hover:bg-[#e3967d] text-white font-medium rounded-lg transition duration-150 ease-in-out">
+                                    Conectar
+                                </button>
+                            </form>
+                            <button disabled class="inline-flex items-center px-6 py-2 bg-gray-400 text-white font-medium rounded-lg">
+                                Enviar Mensagem
+                            </button>
+                            @elseif($conexao->status == 'pendente')
+                            <button disabled class="inline-flex items-center px-6 py-2 bg-gray-400 text-white font-medium rounded-lg">
+                                Solicitação pendente
+                            </button>
+                            <button disabled class="inline-flex items-center px-6 py-2 bg-gray-400 text-white font-medium rounded-lg">
+                                Enviar Mensagem
+                            </button>
+                            @elseif($conexao->status == 'aprovada')
+                            <button disabled class="inline-flex items-center px-6 py-2 bg-green-600 text-white font-medium rounded-lg">
+                                Conectado
+                            </button>
+                            <a href="{{ route('mensagem.nova', $user->id) }}"
+                                class="inline-flex items-center px-6 py-2 bg-[#8dafa0] hover:bg-[#e3967d] text-white font-medium rounded-lg transition duration-150 ease-in-out">
+                                Enviar Mensagem
+                            </a>
+                            @endif
+                            @endif
+
+                            <button type="submit"
+                                class="inline-flex items-center px-6 py-2 bg-[#8dafa0] hover:bg-[#e3967d] text-white font-medium rounded-lg transition duration-150 ease-in-out">
+                                Conectar
+                            </button>
+
+                            <button type="submit"
+                                class="inline-flex items-center px-6 py-2 bg-[#8dafa0] hover:bg-[#e3967d] text-white font-medium rounded-lg transition duration-150 ease-in-out">
+                                Enviar Mensagem
+                            </button>
+
+
                         </div>
 
-                        <!-- Coluna da Direita - Pets -->
+                        <!-- Coluna da Direita - petsData -->
                         <div class="lg:col-span-2">
                             <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between">
                                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center mb-2 sm:mb-0">
                                     <svg class="w-6 h-6 mr-2 text-[#f28a49]" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M4.5 12.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5S6.83 11 6 11s-1.5.67-1.5 1.5zM9 16c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5S11.33 14.5 10.5 14.5 9 15.17 9 16zm4.5-3c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5-1.5.67-1.5 1.5zM16 7c0 .83.67 1.5 1.5 1.5S19 7.83 19 7s-.67-1.5-1.5-1.5S16 6.17 16 7zM7 7c0 .83.67 1.5 1.5 1.5S10 7.83 10 7s-.67-1.5-1.5-1.5S7 6.17 7 7z" />
                                     </svg>
-                                    Meus Pets
+                                    Meus petsData
                                 </h2>
                             </div>
 
-                            <!-- Grid de Pets -->
+                            <!-- Grid de petsData -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                @forelse($pets as $pet)
+                                @forelse($petsData as $pet)
                                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden border border-gray-200 dark:border-gray-700">
                                     <!-- Foto do Pet -->
                                     <div class="aspect-square bg-gray-100 dark:bg-gray-600 relative">
