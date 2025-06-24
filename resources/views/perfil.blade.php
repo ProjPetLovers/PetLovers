@@ -135,7 +135,7 @@
     </h2>
 
     <a href="{{ route('profile.pet.create') }}"
-       class="text-white bg-[#f28a49] hover:bg-[#8dafa0] p-2 rounded-full transition duration-150 ease-in-out"
+       class="text-white bg-[#f28a49] hover:bg-[#8dafa0] p-2 rounded-full transition duration-150 ease-in-out w-10 h-10 flex items-center justify-center"
        title="Adicionar novo pet">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
