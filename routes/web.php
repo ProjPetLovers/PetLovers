@@ -8,6 +8,7 @@ use App\Http\Controllers\PetController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\UsuarioConexaoController;
 use App\Models\Pet;
+use App\Http\Controllers\AdminUserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,9 +19,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //Rotas para o perfil do laravel de usuário autenticado
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     // Rota para exibir a tela do perfil do usuário
     Route::get('/perfil', [ProfileController::class, 'show'])->name('profile.show');
     // Novas rotas para editar detalhes do perfil e remover foto
@@ -41,20 +43,45 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile/pet/{id}', [PetController::class, 'update'])->name('profile.pet.update');
     // Rota para deletar pet
     Route::delete('/profile/pet/{id}', [PetController::class, 'destroy'])->name('profile.pet.destroy');
+    //Rota para softDelete de usuário
+    Route::delete('/perfil/desativar', [ProfileController::class, 'softDeleteAccount'])->name('profile.softDeleteAccount');
 
-    // Rota para exibir o perfil do usuário após o registro    
+
+    // Rota para exibir o perfil do usuário após o registro
     Route::get('usuario_conexao/{id}', [UsuarioConexaoController::class, 'usuarioConexao'])->name('usuario_conexao');
-    // Rota para solicitar conexão com outro usuário    
+    // Rota para solicitar conexão com outro usuário
     Route::post('/conexao/solicitar/{id}', [UsuarioConexaoController::class, 'solicitarConexao'])->name('conexao.solicitar');
     // Rota para aceitar uma solicitação de conexão
     Route::get('/conexoes_solicitacoes', [UsuarioConexaoController::class, 'solicitacoesRecebidas'])->name('conexoes_solicitacoes');
     // Rota para aprovar
     Route::post('/conexoes/aprovar/{id}', [UsuarioConexaoController::class, 'aprovar'])->name('conexoes.aprovar');
-    // Rota para rejeitar 
+    // Rota para rejeitar
     Route::post('/conexoes/rejeitar/{id}', [UsuarioConexaoController::class, 'rejeitar'])->name('conexoes.rejeitar');
     //Rota para mensagens -> substituir pelo controller de mensagens que Amanda vai subir
     Route::get('/mensagem/nova/{id}', [MensagemController::class, 'nova'])->name('mensagem.nova');
 });
+
+// ROTAS DO ADMIN - PROTEGIDAS E COM PREFIXO
+    Route::middleware('can:manage-users')->prefix('admin')->name('admin.')->group(function () {
+
+        // Rota para a lista de usuários do painel administrativo
+        Route::get('/users', [AdminUserController::class, 'index'])->name('users.index');
+
+        // Rota para reativar um usuário soft-deletado
+        Route::post('/users/{user}/restore', [AdminUserController::class, 'restoreUser'])->name('users.restore');
+
+        // Rota para soft delete de um usuário ativo (admin desativa)
+        Route::delete('/users/{user}/soft-delete', [AdminUserController::class, 'softDelete'])->name('users.soft-delete');
+
+        // Rota para exclusão permanente de um usuário
+        Route::delete('/users/{user}/force-delete', [AdminUserController::class, 'forceDelete'])->name('users.force-delete');
+
+        // Rotas para editar usuário (formulário e atualização)
+        Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
+        Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('users.update');
+
+    });
+
 
 // Rotas de registro em etapas (apenas para usuários não autenticados)
 Route::middleware('guest')->group(function () {
