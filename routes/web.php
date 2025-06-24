@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\DetalhesController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\UsuarioConexaoController;
 use App\Models\Pet;
 
 Route::get('/', function () {
@@ -40,6 +41,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile/pet/{id}', [PetController::class, 'update'])->name('profile.pet.update');
     // Rota para deletar pet
     Route::delete('/profile/pet/{id}', [PetController::class, 'destroy'])->name('profile.pet.destroy');
+
+    // Rota para exibir o perfil do usuário após o registro    
+    Route::get('usuario_conexao/{id}', [UsuarioConexaoController::class, 'usuarioConexao'])->name('usuario_conexao');
 });
 
 // Rotas de registro em etapas (apenas para usuários não autenticados)
@@ -59,12 +63,16 @@ Route::middleware('guest')->group(function () {
     // Etapa 4: Finalização do registro
     Route::get('registration/complete', [RegistrationController::class, 'showComplete'])->name('registration.complete');
     Route::post('registration/complete', [RegistrationController::class, 'complete']);
+
+    
 });
 
 Route::get('about', function () {
     return view('about');
 })->name('about');
 
-Route::get('usuario_conexao', [ProfileController::class, 'usuarioConexao'])->name('usuario_conexao');
+//Route::get('usuario_conexao', [ProfileController::class, 'usuarioConexao'])->name('usuario_conexao');
+
+
 
 require __DIR__ . '/auth.php';
