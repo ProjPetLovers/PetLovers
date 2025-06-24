@@ -1,7 +1,9 @@
 <x-app-layout>
+    
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+                
 
                 <!-- Header do Perfil -->
                 <div
@@ -138,15 +140,7 @@
                             @endif
                             @endif
 
-                            <button type="submit"
-                                class="inline-flex items-center px-6 py-2 bg-[#8dafa0] hover:bg-[#e3967d] text-white font-medium rounded-lg transition duration-150 ease-in-out">
-                                Conectar
-                            </button>
-
-                            <button type="submit"
-                                class="inline-flex items-center px-6 py-2 bg-[#8dafa0] hover:bg-[#e3967d] text-white font-medium rounded-lg transition duration-150 ease-in-out">
-                                Enviar Mensagem
-                            </button>
+                        
 
 
                         </div>

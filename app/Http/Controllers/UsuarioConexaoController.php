@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -12,7 +13,6 @@ use App\Models\Conexao;
 
 class UsuarioConexaoController extends Controller
 {
-
     public function usuarioConexao($id)
     {
         $user = User::findOrFail($id);
@@ -23,6 +23,19 @@ class UsuarioConexaoController extends Controller
         }
         $pets = $user->Pet ?? collect();
 
+        // Busca a conexão entre o usuário autenticado e o perfil visitado
+        $conexao = null;
+        if (auth()->check() && auth()->id() != $user->id) {
+            $conexao = Conexao::where(function ($q) use ($user) {
+                $q->where('usuario1_id', auth()->id())
+                    ->where('usuario2_id', $user->id);
+            })
+                ->orWhere(function ($q) use ($user) {
+                    $q->where('usuario1_id', $user->id)
+                        ->where('usuario2_id', auth()->id());
+                })
+                ->first();
+        }
 
         $dataNascimento = $user->detalhesUsuario ? $user->detalhesUsuario->data_nascimento : null;
         $idade = $dataNascimento ? Carbon::parse($dataNascimento)->age : null;
@@ -39,8 +52,6 @@ class UsuarioConexaoController extends Controller
             'idade' => $idade,
         ];
 
-
-
         $petsData = $pets->map(function ($pet) {
             return [
                 'id' => $pet->id_pet ?? $pet->id,
@@ -56,16 +67,16 @@ class UsuarioConexaoController extends Controller
             ];
         });
 
-
         return view('usuario_conexao', compact('user', 'userData', 'intencao', 'petsData', 'conexao'));
     }
+
     public function solicitarConexao($id)
     {
         if (auth()->id() == $id) {
             return back()->with('error', 'Você não pode se conectar consigo mesmo.');
         }
 
-        $existe = \App\Models\Conexao::where(function ($q) use ($id) {
+        $existe = Conexao::where(function ($q) use ($id) {
             $q->where('usuario1_id', auth()->id())
                 ->where('usuario2_id', $id);
         })
@@ -76,7 +87,7 @@ class UsuarioConexaoController extends Controller
             ->first();
 
         if (!$existe) {
-            \App\Models\Conexao::create([
+            Conexao::create([
                 'usuario1_id' => auth()->id(),
                 'usuario2_id' => $id,
                 'pedido_em' => now(),
@@ -85,5 +96,35 @@ class UsuarioConexaoController extends Controller
         }
 
         return back()->with('success', 'Solicitação enviada!');
+    }
+
+    public function solicitacoesRecebidas()
+    {
+        $solicitacoes = Conexao::where('usuario2_id', auth()->id())
+            ->where('status', 'pendente')
+            ->with('usuario1')
+            ->get();
+
+        return view('conexoes_solicitacoes', compact('solicitacoes'));
+    }
+
+    public function aprovar($id)
+    {
+        $conexao = Conexao::findOrFail($id);
+        if ($conexao->usuario2_id == auth()->id()) {
+            $conexao->status = 'aprovada';
+            $conexao->save();
+        }
+        return back();
+    }
+
+    public function rejeitar($id)
+    {
+        $conexao = Conexao::findOrFail($id);
+        if ($conexao->usuario2_id == auth()->id()) {
+            $conexao->status = 'rejeitada';
+            $conexao->save();
+        }
+        return back();
     }
 }

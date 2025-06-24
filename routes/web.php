@@ -46,6 +46,14 @@ Route::middleware('auth')->group(function () {
     Route::get('usuario_conexao/{id}', [UsuarioConexaoController::class, 'usuarioConexao'])->name('usuario_conexao');
     // Rota para solicitar conexão com outro usuário    
     Route::post('/conexao/solicitar/{id}', [UsuarioConexaoController::class, 'solicitarConexao'])->name('conexao.solicitar');
+    // Rota para aceitar uma solicitação de conexão
+    Route::get('/conexoes_solicitacoes', [UsuarioConexaoController::class, 'solicitacoesRecebidas'])->name('conexoes_solicitacoes');
+    // Rota para aprovar
+    Route::post('/conexoes/aprovar/{id}', [UsuarioConexaoController::class, 'aprovar'])->name('conexoes.aprovar');
+    // Rota para rejeitar 
+    Route::post('/conexoes/rejeitar/{id}', [UsuarioConexaoController::class, 'rejeitar'])->name('conexoes.rejeitar');
+    //Rota para mensagens -> substituir pelo controller de mensagens que Amanda vai subir
+    Route::get('/mensagem/nova/{id}', [MensagemController::class, 'nova'])->name('mensagem.nova');
 });
 
 // Rotas de registro em etapas (apenas para usuários não autenticados)
@@ -65,8 +73,6 @@ Route::middleware('guest')->group(function () {
     // Etapa 4: Finalização do registro
     Route::get('registration/complete', [RegistrationController::class, 'showComplete'])->name('registration.complete');
     Route::post('registration/complete', [RegistrationController::class, 'complete']);
-
-    
 });
 
 Route::get('about', function () {
