@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\DetalhesController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\UsuarioConexaoController;
 use App\Models\Pet;
 use App\Http\Controllers\AdminUserController;
 
@@ -45,6 +46,19 @@ Route::middleware('auth')->group(function () {
     //Rota para softDelete de usuário
     Route::delete('/perfil/desativar', [ProfileController::class, 'softDeleteAccount'])->name('profile.softDeleteAccount');
 
+
+    // Rota para exibir o perfil do usuário após o registro
+    Route::get('usuario_conexao/{id}', [UsuarioConexaoController::class, 'usuarioConexao'])->name('usuario_conexao');
+    // Rota para solicitar conexão com outro usuário
+    Route::post('/conexao/solicitar/{id}', [UsuarioConexaoController::class, 'solicitarConexao'])->name('conexao.solicitar');
+    // Rota para aceitar uma solicitação de conexão
+    Route::get('/conexoes_solicitacoes', [UsuarioConexaoController::class, 'solicitacoesRecebidas'])->name('conexoes_solicitacoes');
+    // Rota para aprovar
+    Route::post('/conexoes/aprovar/{id}', [UsuarioConexaoController::class, 'aprovar'])->name('conexoes.aprovar');
+    // Rota para rejeitar
+    Route::post('/conexoes/rejeitar/{id}', [UsuarioConexaoController::class, 'rejeitar'])->name('conexoes.rejeitar');
+    //Rota para mensagens -> substituir pelo controller de mensagens que Amanda vai subir
+    Route::get('/mensagem/nova/{id}', [MensagemController::class, 'nova'])->name('mensagem.nova');
 });
 
 // ROTAS DO ADMIN - PROTEGIDAS E COM PREFIXO
@@ -92,6 +106,8 @@ Route::get('about', function () {
     return view('about');
 })->name('about');
 
-Route::get('usuario_conexao', [ProfileController::class, 'usuarioConexao'])->name('usuario_conexao');
+//Route::get('usuario_conexao', [ProfileController::class, 'usuarioConexao'])->name('usuario_conexao');
+
+
 
 require __DIR__ . '/auth.php';
