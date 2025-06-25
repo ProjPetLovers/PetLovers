@@ -103,10 +103,13 @@ Route::middleware('guest')->group(function () {
     Route::post('registration/complete', [RegistrationController::class, 'complete']);
 
     // Rota para ver todas as conexões (lista de conversas)
-    Route::get('/mensagens', [MensagemController::class, 'index'])->name('Mensagens.index');
+    Route::get('/mensagens/index', [MensagemController::class, 'index'])->name('mensagens.index');
 
     // Rota para ver o chat com um usuário conectado
     Route::get('/chat/{user_id}', [MensagemController::class, 'getChat'])->name('chat');
+
+    // Rota para enviar mensagem (via AJAX)
+    Route::post('/mensagens/enviar', [MensagemController::class, 'enviar'])->name('mensagens.enviar');
 
 
 });
