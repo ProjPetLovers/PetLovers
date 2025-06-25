@@ -141,7 +141,7 @@
 
                 <!-- Foto do Pet -->
                 <div class="mt-6">
-                    <x-input-label for="foto" :value="__('Foto do Pet (Opcional)')" class="!text-dark" />
+                    <x-input-label for="foto" :value="__('Foto do Pet')" class="!text-dark" />
                     <label for="foto" class="block mt-1 w-full cursor-pointer bg-light border-primary text-primary font-semibold py-2 px-4 rounded-md shadow-sm hover:bg-primary hover:text-white transition text-center">
                         Escolher arquivo
                         <input id="foto" name="foto" type="file" accept="image/jpeg,image/png,image/jpg,image/gif" class="hidden" />

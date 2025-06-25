@@ -13,7 +13,7 @@ return new class extends Migration
     {
         // detalhes_usuario
         Schema::table('detalhes_usuario', function (Blueprint $table) {
-            $table->dropForeign('detalhes_usuario_id_detalhes_usuario_foreign');
+            $table->dropForeign('detalhes_usuario_ibfk_1');
             $table->foreign('id_detalhes_usuario')->references('id')->on('users')->onDelete('cascade');
         });
 
@@ -56,7 +56,7 @@ return new class extends Migration
         // pet
         Schema::table('pet', function (Blueprint $table) {
             // Dropa a chave estrangeira com CASCADE que foi criada no 'up'
-            $table->dropForeign(['usuario_id']); 
+            $table->dropForeign(['usuario_id']);
             // Recria a chave estrangeira sem onDelete('cascade')
             $table->foreign('usuario_id')->references('id')->on('users');
         });
@@ -64,8 +64,8 @@ return new class extends Migration
         // conexao
         Schema::table('conexao', function (Blueprint $table) {
             // Dropa as chaves estrangeiras com CASCADE que foram criadas no 'up'
-            $table->dropForeign(['usuario1_id']); 
-            $table->dropForeign(['usuario2_id']); 
+            $table->dropForeign(['usuario1_id']);
+            $table->dropForeign(['usuario2_id']);
             // Recria as chaves estrangeiras sem onDelete('cascade')
             $table->foreign('usuario1_id')->references('id')->on('users');
             $table->foreign('usuario2_id')->references('id')->on('users');
@@ -74,8 +74,8 @@ return new class extends Migration
         // mensagem
         Schema::table('mensagem', function (Blueprint $table) {
             // Dropa as chaves estrangeiras com CASCADE que foram criadas no 'up'
-            $table->dropForeign(['destinatario_id']); 
-            $table->dropForeign(['remetente_id']); 
+            $table->dropForeign(['destinatario_id']);
+            $table->dropForeign(['remetente_id']);
             // Recria as chaves estrangeiras sem onDelete('cascade')
             $table->foreign('destinatario_id')->references('id')->on('users');
             $table->foreign('remetente_id')->references('id')->on('users');
