@@ -2,16 +2,15 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                
+
                 <!-- Header do Perfil -->
-                <div 
+                <div
                     class="relative p-8"
                     @if($userData['fundo_url'])
                         style="background-image: url('{{ $userData['fundo_url'] }}'); background-size: cover; background-position: center;"
                     @else
                         style="background: linear-gradient(to right, #e3967d, #57342d);"
-                    @endif
-                >
+                    @endif>
                     <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
                         <!-- Foto do Usuário -->
                         <div class="relative">
@@ -27,7 +26,7 @@
                                 </div>
                             @endif
                         </div>
-                        
+
                         <!-- Informações Principais -->
                         <div class="text-center md:text-left text-white">
                             <h1 class="text-3xl font-bold">{{ $userData['name'] }}</h1>
@@ -50,10 +49,10 @@
                 <!-- Conteúdo Principal -->
                 <div class="p-8">
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                        
+
                         <!-- Coluna da Esquerda - Informações Pessoais -->
                         <div class="lg:col-span-1 space-y-6">
-                            
+
                             <!-- Bio -->
                             @if($userData['bio'])
                                 <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
@@ -106,21 +105,21 @@
                                         </svg>
                                         <span class="text-gray-700 dark:text-gray-300">{{ $userData['email'] }}</span>
                                     </div>
-                                    
+
                                 </div>
-                                
+
                             </div>
                                                <!-- Botões de Ação -->
                     <div class="mt-8 flex flex-wrap gap-4 justify-center">
-    <a href="{{ route('profile.edit-details') }}" 
+    <a href="{{ route('profile.edit-details') }}"
        class="inline-flex items-center px-6 py-3 bg-[#e3967d] hover:bg-[#8dafa0] text-white font-medium rounded-lg transition duration-150 ease-in-out" title:"Editar perfil">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
         </svg>
         Editar Perfil
     </a>
-                        
-                     
+
+
                     </div>
                         </div>
 
@@ -149,19 +148,19 @@
                                 @forelse($pets as $pet)
                                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden border border-gray-200 dark:border-gray-700">
                                         <!-- Foto do Pet -->
-                                         
+
                                         <div class="aspect-square bg-gray-100 dark:bg-gray-600 relative">
                                             @if($pet['foto_url'])
-                                                <img 
-                                                    src="{{ $pet['foto_url'] }}" 
-                                                    alt="Foto de {{ $pet['nome'] }}" 
+                                                <img
+                                                    src="{{ $pet['foto_url'] }}"
+                                                    alt="Foto de {{ $pet['nome'] }}"
                                                     class="w-full h-full object-cover"
                                                 >
                                             @endif
                                             <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
                                         </div>
-                                        
-                                        
+
+
                                         <!-- Informações do Pet -->
                                         <div class="p-4">
                                             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{{ $pet['nome'] }}</h3>
@@ -174,37 +173,37 @@
                                                     </div>
                                                 @endif
 <p></p>
-                                                
+
 </div>
-                                            
+
                                             <div class="space-y-2 text-sm">
                                                 <div class="flex items-center">
                                                     <span class="font-medium text-gray-600 dark:text-gray-400 w-20">Espécie:</span>
                                                     <span class="text-gray-900 dark:text-white">{{ $pet['especie'] }}</span>
                                                 </div>
-                                                
+
                                                 <div class="flex items-center">
                                                     <span class="font-medium text-gray-600 dark:text-gray-400 w-20">Raça:</span>
                                                     <span class="text-gray-900 dark:text-white">{{ $pet['raca'] }}</span>
                                                 </div>
-                                                
+
                                                 <div class="flex items-center">
                                                     <span class="font-medium text-gray-600 dark:text-gray-400 w-20">Sexo:</span>
                                                     <span class="text-gray-900 dark:text-white">{{ $pet['sexo'] }}</span>
                                                 </div>
-                                                
+
                                                 <div class="flex items-center">
                                                     <span class="font-medium text-gray-600 dark:text-gray-400 w-20">Peso:</span>
                                                     <span class="text-gray-900 dark:text-white">{{ $pet['peso'] }}kg</span>
                                                 </div>
-                                                
+
                                                 @if($pet['idade'])
                                                     <div class="flex items-center">
                                                         <span class="font-medium text-gray-600 dark:text-gray-400 w-20">Idade:</span>
                                                         <span class="text-gray-900 dark:text-white">{{ $pet['idade'] }} anos</span>
                                                     </div>
                                                 @endif
-                                                
+
                                                 <div class="flex items-center">
                                                     <span class="font-medium text-gray-600 dark:text-gray-400 w-20">Castrado:</span>
                                                     <span class="text-gray-900 dark:text-white">{{ $pet['castrado'] }}</span>
@@ -220,8 +219,8 @@
     </svg>
 </a>
 
-    <form action="{{ route('profile.pet.destroy', ['id' => $pet['id']]) }}" method="POST" data-confirm="true"> 
-        @csrf @method('DELETE') <button type="submit" class="text-red-500 hover:text-red-800" 
+    <form action="{{ route('profile.pet.destroy', ['id' => $pet['id']]) }}" method="POST" data-confirm="true">
+        @csrf @method('DELETE') <button type="submit" class="text-red-500 hover:text-red-800"
         title="Excluir pet"> <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m-3-3v3"/>
              </svg> </button> </form>
@@ -242,7 +241,7 @@
                         </div>
                     </div>
 
- 
+
                 </div>
             </div>
         </div>
