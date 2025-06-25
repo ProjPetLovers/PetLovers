@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return redirect()->route('usuarios');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     //Rotas para o perfil do laravel de usuário autenticado
@@ -47,7 +49,6 @@ Route::middleware('auth')->group(function () {
     //Rota para softDelete de usuário
     Route::delete('/perfil/desativar', [ProfileController::class, 'softDeleteAccount'])->name('profile.softDeleteAccount');
 
-
     // Rota para exibir o perfil do usuário após o registro
     Route::get('usuario_conexao/{id}', [UsuarioConexaoController::class, 'usuarioConexao'])->name('usuario_conexao');
     // Rota para solicitar conexão com outro usuário
@@ -59,12 +60,14 @@ Route::middleware('auth')->group(function () {
     // Rota para rejeitar
     Route::post('/conexoes/rejeitar/{id}', [UsuarioConexaoController::class, 'rejeitar'])->name('conexoes.rejeitar');
     //Rota para mensagens -> substituir pelo controller de mensagens que Amanda vai subir
-    Route::get('/mensagem/nova/{id}', [MensagemController::class, 'nova'])->name('mensagem.nova');
+    //Route::get('/mensagem/nova/{id}', [MensagemController::class, 'nova'])->name('mensagem.nova');
 });
 
 // ROTAS DO ADMIN - PROTEGIDAS E COM PREFIXO
-    Route::middleware('can:manage-users')->prefix('admin')->name('admin.')->group(function () {
-
+Route::middleware('can:manage-users')
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
         // Rota para a lista de usuários do painel administrativo
         Route::get('/users', [AdminUserController::class, 'index'])->name('users.index');
 
@@ -80,9 +83,7 @@ Route::middleware('auth')->group(function () {
         // Rotas para editar usuário (formulário e atualização)
         Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
         Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('users.update');
-
     });
-
 
 // Rotas de registro em etapas (apenas para usuários não autenticados)
 Route::middleware('guest')->group(function () {
@@ -101,17 +102,17 @@ Route::middleware('guest')->group(function () {
     // Etapa 4: Finalização do registro
     Route::get('registration/complete', [RegistrationController::class, 'showComplete'])->name('registration.complete');
     Route::post('registration/complete', [RegistrationController::class, 'complete']);
+});
 
+Route::middleware('auth')->group(function () {
     // Rota para ver todas as conexões (lista de conversas)
-    Route::get('/mensagens/index', [MensagemController::class, 'index'])->name('mensagens.index');
+    Route::get('mensagens/index', [MensagemController::class, 'index'])->name('mensagens.index');
 
     // Rota para ver o chat com um usuário conectado
-    Route::get('/chat/{user_id}', [MensagemController::class, 'getChat'])->name('chat');
+    Route::get('chat/{user_id}', [MensagemController::class, 'getChat'])->name('chat');
 
     // Rota para enviar mensagem (via AJAX)
-    Route::post('/mensagens/enviar', [MensagemController::class, 'enviar'])->name('mensagens.enviar');
-
-
+    Route::post('mensagens/enviar', [MensagemController::class, 'enviar'])->name('mensagens.enviar');
 });
 
 Route::get('about', function () {
@@ -119,7 +120,5 @@ Route::get('about', function () {
 })->name('about');
 
 //Route::get('usuario_conexao', [ProfileController::class, 'usuarioConexao'])->name('usuario_conexao');
-
-
 
 require __DIR__ . '/auth.php';

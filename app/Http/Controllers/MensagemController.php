@@ -9,6 +9,7 @@ use App\Service\ConversaService;
 use App\Service\MensagemService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class MensagemController extends Controller
 {
@@ -28,7 +29,9 @@ class MensagemController extends Controller
     {
         $authId = Auth::id();
         $conexoes = $this->conversa_service->getUsersChats($authId);
+        Log::info('Conexões encontradas: ', ['count' => $conexoes->count()]);
         $hasUsers = !$conexoes -> isEmpty();
+        Log::info('Usuários encontrados: ', ['hasUsers' => $hasUsers]);
         return view('mensagens.index', compact('conexoes', 'hasUsers'));
     }
 
