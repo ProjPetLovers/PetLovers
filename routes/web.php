@@ -59,8 +59,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/conexoes/aprovar/{id}', [UsuarioConexaoController::class, 'aprovar'])->name('conexoes.aprovar');
     // Rota para rejeitar
     Route::post('/conexoes/rejeitar/{id}', [UsuarioConexaoController::class, 'rejeitar'])->name('conexoes.rejeitar');
-    //Rota para mensagens -> substituir pelo controller de mensagens que Amanda vai subir
-    //Route::get('/mensagem/nova/{id}', [MensagemController::class, 'nova'])->name('mensagem.nova');
+    //Rota para mensagens
+    Route::get('/mensagem/nova/{id}', [MensagemController::class, 'nova'])->name('mensagem.nova');
 });
 
 // ROTAS DO ADMIN - PROTEGIDAS E COM PREFIXO
@@ -118,7 +118,4 @@ Route::middleware('auth')->group(function () {
 Route::get('about', function () {
     return view('about');
 })->name('about');
-
-//Route::get('usuario_conexao', [ProfileController::class, 'usuarioConexao'])->name('usuario_conexao');
-
 require __DIR__ . '/auth.php';

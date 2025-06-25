@@ -30,19 +30,33 @@
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
 
 
-                        @if (!request()->routeIs('mensagens.index') && !request()->routeIs('chat'))
+                        @if (
+                            !request()->routeIs('mensagens.index') &&
+                                !request()->routeIs('chat') &&
+                                !request()->routeIs('usuario_conexao') &&
+                                !request()->routeIs('profile.show') &&
+                                !request()->routeIs('conexoes_solicitacoes'))
                             <a href="{{ url('mensagens/index') }}" class=" text-light text-lg font-semibold ml-2">
                                 Mensagens</a>
                         @endif
 
 
-                        @if (!request()->routeIs('usuarios') && !request()->routeIs('chat'))
+                        @if (
+                            !request()->routeIs('usuarios') &&
+                                !request()->routeIs('chat') &&
+                                !request()->routeIs('usuario_conexao') &&
+                                !request()->routeIs('profile.show') &&
+                                !request()->routeIs('conexoes_solicitacoes'))
                             <a href="{{ url('usuarios') }}" class="text-light text-lg font-semibold ml-2">
                                 Feed
                             </a>
                         @endif
 
-                        @if (!request()->routeIs('usuarios') && !request()->routeIs('mensagens.index'))
+                        @if (
+                            !request()->routeIs('usuarios') &&
+                                !request()->routeIs('mensagens.index') &&
+                                !request()->routeIs('usuario_conexao') &&
+                                !request()->routeIs('profile.show'))
                             <a href="{{ url('mensagens/index') }}" class="text-light text-lg font-semibold ml-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor" class="w-6 h-6">
