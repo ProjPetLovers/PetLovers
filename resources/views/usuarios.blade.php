@@ -45,8 +45,8 @@
 <span class="sm:hidden">Filtros</span>
 </h2>
 <!-- Botão para abrir/fechar filtros no mobile -->
-<button 
-                id="toggle-filters" 
+<button
+                id="toggle-filters"
                 class="sm:hidden inline-flex items-center px-3 py-2 bg-[#8dafa0] hover:bg-[#e3967d] text-white rounded-lg transition duration-150 ease-in-out"
                 onclick="toggleFilters()"
 >
@@ -58,7 +58,7 @@
 </svg>
 </button>
 </div>
- 
+
         <!-- Container dos filtros - oculto por padrão no mobile -->
 <div id="filters-container" class="hidden sm:block">
 <form method="GET" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
@@ -69,7 +69,7 @@
                         value="{{ request('nome') }}"
                         class="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-[#e3967d] focus:ring-[#e3967d] dark:bg-gray-700 dark:text-white">
 </div>
- 
+
                 <div>
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Conexões</label>
 <select name="conexao"
@@ -79,14 +79,14 @@
 <option value="pendente" {{ request('conexao') == 'pendente' ? 'selected' : '' }}>Pendentes</option>
 </select>
 </div>
- 
+
                 <div>
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Localização</label>
 <input type="text" name="localizacao" placeholder="Cidade, estado..."
                         value="{{ request('localizacao') }}"
                         class="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm focus:border-[#e3967d] focus:ring-[#e3967d] dark:bg-gray-700 dark:text-white">
 </div>
- 
+
                 <div>
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Intenção</label>
 <select name="intencao"
@@ -97,7 +97,7 @@
 <option value="Passeio" {{ request('intencao') == 'Passeio' ? 'selected' : '' }}>Passeio</option>
 </select>
 </div>
- 
+
                 <div>
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Socializa com</label>
 <select name="socializa_com"
@@ -109,7 +109,7 @@
 <option value="Não socializa" {{ request('socializa_com') == 'Não socializa' ? 'selected' : '' }}>Não socializa</option>
 </select>
 </div>
- 
+
                 <div>
 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Espécie do Pet</label>
 <select name="especie"
@@ -124,7 +124,7 @@
 <option value="Outro" {{ request('especie') == 'Outro' ? 'selected' : '' }}>Outro</option>
 </select>
 </div>
- 
+
                 <div class="xl:col-span-6 flex gap-3 mt-4">
 <button type="submit"
                         class="inline-flex items-center px-6 py-2 bg-[#8dafa0] hover:bg-[#e3967d] text-white font-medium rounded-lg transition duration-150 ease-in-out">
@@ -134,7 +134,7 @@
 </svg>
                         Filtrar
 </button>
- 
+
                     <a href="{{ route('usuarios') }}"
                         class="inline-flex items-center px-6 py-2 bg-gray-500 hover:bg-gray-600 text-white font-medium rounded-lg transition duration-150 ease-in-out">
 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,7 +148,7 @@
 </div>
 </div>
 </div>
- 
+
 <!-- JavaScript para controlar os filtros -->
 <script>
 function toggleFilters() {
@@ -176,7 +176,7 @@ function toggleFilters() {
                         $pet = $pets->first(); // Primeiro pet para compatibilidade
                     @endphp
 
-                    <a href="{{ route('profile.user', ['id' => $usuario->id]) }}"
+                    <a href="{{ route('usuario_conexao', ['id' => $usuario->id]) }}"
                         class="block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 transform hover:-translate-y-1">
 
                         <!-- Header do Card com Gradiente -->

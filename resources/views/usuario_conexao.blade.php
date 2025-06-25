@@ -1,9 +1,9 @@
 <x-app-layout>
-    
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                
+
 
                 <!-- Header do Perfil -->
                 <div
@@ -129,7 +129,7 @@
                             <button disabled class="inline-flex items-center px-6 py-2 bg-gray-400 text-white font-medium rounded-lg">
                                 Enviar Mensagem
                             </button>
-                            @elseif($conexao->status == 'aprovada')
+                            @elseif($conexao->status == 'aceito')
                             <button disabled class="inline-flex items-center px-6 py-2 bg-green-600 text-white font-medium rounded-lg">
                                 Conectado
                             </button>
@@ -140,7 +140,7 @@
                             @endif
                             @endif
 
-                        
+
 
 
                         </div>

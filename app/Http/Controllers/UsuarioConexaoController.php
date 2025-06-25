@@ -112,7 +112,7 @@ class UsuarioConexaoController extends Controller
     {
         $conexao = Conexao::findOrFail($id);
         if ($conexao->usuario2_id == auth()->id()) {
-            $conexao->status = 'aprovada';
+            $conexao->status = 'aceito';
             $conexao->save();
         }
         return back();

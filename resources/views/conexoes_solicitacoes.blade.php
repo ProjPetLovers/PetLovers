@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="max-w-2xl mx-auto py-8">
-        <h2 class="text-2xl font-bold mb-4">Solicitações de conexão recebidas</h2>
+        <h2 class="text-2xl font-bold mb-4">Solicitações de conexões recebidas</h2>
         <ul class="space-y-4">
             @forelse($solicitacoes as $conexao)
                 <li class="flex items-center justify-between bg-white dark:bg-gray-800 p-4 rounded shadow">
