@@ -23,9 +23,40 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16">
                     {{-- Logo / Nome da App --}}
-                    <div class="flex-shrink-0"> <x-application-logo
-                            class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                    <div class="flex-shrink-0 flex items-center gap-4"">
+                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+
+
+                        @if (!request()->routeIs('mensagens.index') && !request()->routeIs('chat'))
+                            <a href="{{ url('mensagens/index') }}" class=" text-light text-lg font-semibold ml-2">
+                                Mensagens</a>
+                        @endif
+
+
+                        @if (!request()->routeIs('usuarios') && !request()->routeIs('chat'))
+                            <a href="{{ url('usuarios') }}" class="text-light text-lg font-semibold ml-2">
+                                Feed
+                            </a>
+                        @endif
+
+                        @if (!request()->routeIs('usuarios') && !request()->routeIs('mensagens.index'))
+                            <a href="{{ url('mensagens/index') }}" class="text-light text-lg font-semibold ml-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
+                            </a>
+                        @endif
+
+
+
                     </div>
+
+                    <div>
+
+                    </div>
+
 
                     {{-- Links --}}
                     <div class="hidden sm:flex sm:space-x-6">

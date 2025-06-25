@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\DetalhesController;
+use App\Http\Controllers\MensagemController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\RegistrationController;
 use App\Models\Pet;
@@ -59,11 +60,33 @@ Route::middleware('guest')->group(function () {
     // Etapa 4: Finalização do registro
     Route::get('registration/complete', [RegistrationController::class, 'showComplete'])->name('registration.complete');
     Route::post('registration/complete', [RegistrationController::class, 'complete']);
+
+    // Rota para ver todas as conexões (lista de conversas)
+    Route::get('/mensagens', [MensagemController::class, 'index'])->name('Mensagens.index');
+
+    // Rota para ver o chat com um usuário conectado
+    Route::get('/chat/{user_id}', [MensagemController::class, 'getChat'])->name('chat');
+
+
 });
 
 Route::get('about', function () {
     return view('about');
 })->name('about');
+
+
+Route::middleware('auth')->group(function () {
+    // Rota para ver todas as conexões (lista de conversas)
+    Route::get('/mensagens/index', [MensagemController::class, 'index'])->name('mensagens.index');
+
+    // Rota para ver o chat com um usuário conectado
+    Route::get('/chat/{user_id}', [MensagemController::class, 'getChat'])->name('chat');
+
+    // Rota para enviar mensagem (via AJAX)
+    Route::post('/mensagens/enviar', [MensagemController::class, 'enviar'])->name('mensagens.enviar');
+});
+
+
 
 Route::get('usuario_conexao', [ProfileController::class, 'usuarioConexao'])->name('usuario_conexao');
 
