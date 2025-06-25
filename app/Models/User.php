@@ -8,11 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\DetalhesUsuario;
 use App\Models\Pet;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -56,6 +58,12 @@ class User extends Authenticatable
 public function Pet()
 {
     return $this->hasMany(Pet::class, 'usuario_id');
+}
+
+
+public function intencao()
+{
+    return $this->belongsTo(Intencao::class, 'cod_intencao', 'id');
 }
 
 

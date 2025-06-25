@@ -49,22 +49,30 @@ class ProfileController extends Controller
     /**
      * Delete the user's account.
      */
-    public function destroy(Request $request): RedirectResponse
+public function softDeleteAccount(Request $request)
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
+        $user = Auth::user(); // Obtém o usuário atualmente logado
 
-        $user = $request->user();
+        if (!$user) {
+            // Se, por algum motivo, o usuário não estiver logado (mesmo com middleware 'auth')
+            return redirect()->back()->with('error', 'Usuário não autenticado.');
+        }
 
-        Auth::logout();
+        try {
+            // Realiza o soft delete
+            $user->delete(); // Isso define o campo 'deleted_at'
 
-        $user->delete();
+            // Opcional: Deslogar o usuário após a "finalização"
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+            return redirect('/')->with('success', 'Sua conta foi finalizada com sucesso.');
 
-        return Redirect::to('/');
+        } catch (\Exception $e) {
+            // Lidar com possíveis erros
+            return redirect()->back()->with('error', 'Ocorreu um erro ao finalizar sua conta. Por favor, tente novamente.');
+        }
     }
 
     /**

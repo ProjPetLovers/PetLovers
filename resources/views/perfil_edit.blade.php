@@ -2,7 +2,7 @@
     <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                
+
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-[#e3967d] to-[#57342d] p-8">
                     <div class="flex items-center space-x-4">
@@ -12,7 +12,7 @@
                         <h1 class="text-3xl font-bold text-white">Editar Perfil</h1>
                     </div>
                 </div>
-                
+
 
                 @if ($errors->any())
     <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
@@ -24,8 +24,6 @@
         </ul>
     </div>
 @endif
-
-
 
                 <!-- Formulário -->
                 <div class="p-8">
@@ -41,7 +39,7 @@
                                 </svg>
                                 Fotos do Perfil
                             </h3>
-                            
+
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <!-- Foto do Perfil -->
                                 <div>
@@ -91,17 +89,17 @@
                                 </svg>
                                 Informações Pessoais
                             </h3>
-                            
+
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <!-- Nome -->
                                 <div>
                                     <label for="nome" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                         Nome Completo
                                     </label>
-                                    <input 
-                                        type="text" 
-                                        id="nome" 
-                                        name="nome" 
+                                    <input
+                                        type="text"
+                                        id="nome"
+                                        name="nome"
                                         value="{{ old('nome', $userData['name']) }}"
                                         class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-[#e3967d] focus:border-[#e3967d] dark:bg-gray-800 dark:text-white"
                                         required
@@ -116,10 +114,10 @@
                                     <label for="apelido" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                         Apelido
                                     </label>
-                                    <input 
-                                        type="text" 
-                                        id="apelido" 
-                                        name="apelido" 
+                                    <input
+                                        type="text"
+                                        id="apelido"
+                                        name="apelido"
                                         value="{{ old('apelido', $userData['apelido']) }}"
                                         class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-[#e3967d] focus:border-[#e3967d] dark:bg-gray-800 dark:text-white"
                                     >
@@ -128,17 +126,17 @@
                                     @enderror
                                 </div>
 
-                                
+
 
                                 <!-- Data de Nascimento -->
                                 <div>
                                     <label for="data_nascimento" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                         Data de Nascimento
                                     </label>
-                                    <input 
-                                        type="date" 
-                                        id="data_nascimento" 
-                                        name="data_nascimento" 
+                                    <input
+                                        type="date"
+                                        id="data_nascimento"
+                                        name="data_nascimento"
                                         value="{{ old('data_nascimento', $detalhes?->data_nascimento) }}"
                                         class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-[#e3967d] focus:border-[#e3967d] dark:bg-gray-800 dark:text-white"
                                     >
@@ -152,10 +150,10 @@
                                     <label for="localizacao" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                         Localização
                                     </label>
-                                    <input 
-                                        type="text" 
-                                        id="localizacao" 
-                                        name="localizacao" 
+                                    <input
+                                        type="text"
+                                        id="localizacao"
+                                        name="localizacao"
                                         value="{{ old('localizacao', $userData['localizacao']) }}"
                                         class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-[#e3967d] focus:border-[#e3967d] dark:bg-gray-800 dark:text-white"
                                         placeholder="Ex: São Paulo, SP"
@@ -177,9 +175,9 @@
                                     </svg>
                                     Sobre Mim
                                 </h3>
-                                <textarea 
-                                    id="bio" 
-                                    name="bio" 
+                                <textarea
+                                    id="bio"
+                                    name="bio"
                                     rows="4"
                                     class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-[#e3967d] focus:border-[#e3967d] dark:bg-gray-800 dark:text-white"
                                     placeholder="Conte um pouco sobre você..."
@@ -197,14 +195,14 @@
                                     </svg>
                                     Intenção
                                 </h3>
-                                <select 
-                                    id="cod_intencao" 
+                                <select
+                                    id="cod_intencao"
                                     name="cod_intencao"
                                     class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-[#e3967d] focus:border-[#e3967d] dark:bg-gray-800 dark:text-white"
                                 >
                                     <option value="">Selecione uma intenção</option>
                                     @foreach($intencoes as $intencao)
-                                        <option value="{{ $intencao->cod_intencao }}" 
+                                        <option value="{{ $intencao->cod_intencao }}"
                                                 {{ old('cod_intencao', $detalhes?->cod_intencao) == $intencao->cod_intencao ? 'selected' : '' }}>
                                             {{ $intencao->descricao }}
                                         </option>
@@ -214,20 +212,23 @@
                                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
+
                         </div>
+
+
 
                         <!-- Botões de Ação -->
                         <div class="flex flex-wrap gap-4 justify-center pt-6 border-t border-gray-200 dark:border-gray-600">
-                            
-                        <a href="{{ route('profile.show') }}" 
+
+                        <a href="{{ route('profile.show') }}"
                                class="inline-flex items-center px-6 py-3 bg-gray-500 hover:bg-gray-600 text-white font-medium rounded-lg transition duration-150 ease-in-out">
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                                 Cancelar
                             </a>
-                        <button 
-                                type="submit" 
+                        <button
+                                type="submit"
                                 class="inline-flex items-center px-6 py-3 bg-[#e3967d] hover:bg-[#d68a6a] text-white font-medium rounded-lg transition duration-150 ease-in-out"
                             >
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -235,36 +236,76 @@
                                 </svg>
                                 Salvar Alterações
                             </button>
-                            
-                            
 
-                         
+
+
+
                         </div>
 
                     </form>
+                    <!-- Desativação de conta -->
+                                                                            <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 col-span-full m-4">
+                                                                                <div class="flex justify-between items-center mb-4 w-full">
+
+                                                                                    <!-- Título com ícone -->
+                                                                                    <h3 class="flex items-center text-lg font-semibold text-gray-900 dark:text-white m-0">
+                                                                                        <svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                                                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                                                                        </svg>
+                                                                                        Desativar Conta
+                                                                                    </h3>
+
+                                                                                    <!-- Formulário com botão de desativar -->
+                                                                                    <form action="{{ route('profile.softDeleteAccount') }}" method="POST"
+                                                                                          onsubmit="return confirm('Tem certeza que deseja desativar sua conta? Esta ação não pode ser desfeita.');">
+                                                                                        @csrf
+                                                                                        @method('DELETE')
+                                                                                        <button type="submit"
+                                                                                                class="inline-flex items-center px-4 py-2 border border-red-500 text-red-500 hover:bg-red-100 dark:hover:bg-red-800 font-medium rounded-lg transition duration-150 ease-in-out"
+                                                                                                title="Desativar Minha Conta">
+                                                                                            <!-- Ícone de banimento -->
+                                                                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                                                                      d="M18.364 5.636a9 9 0 11-12.728 0m12.728 0L5.636 18.364" />
+                                                                                            </svg>
+                                                                                            Desativar
+                                                                                        </button>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
                 </div>
+
             </div>
         </div>
     </div>
 
+   
     <!-- Script para preview das imagens -->
-    <script>
-        function previewImage(input, previewId) {
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById(previewId).src = e.target.result;
-                }
-                reader.readAsDataURL(input.files[0]);
+<script>
+    function previewImage(input, imageElement) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imageElement.src = e.target.result;
             }
+            reader.readAsDataURL(input.files[0]);
         }
-
-        document.querySelector('input[name="foto"]').addEventListener('change', function() {
-            previewImage(this, 'foto-preview');
-        });
-
-        document.querySelector('input[name="photo_fundo"]').addEventListener('change', function() {
-            previewImage(this, 'fundo-preview');
-        });
-    </script>
+    }
+ 
+    document.querySelector('input[name="foto"]').addEventListener('change', function() {
+        // Encontra a imagem de perfil (primeira img dentro do container da foto de perfil)
+        const fotoContainer = this.closest('.flex').querySelector('img');
+        if (fotoContainer) {
+            previewImage(this, fotoContainer);
+        }
+    });
+ 
+    document.querySelector('input[name="photo_fundo"]').addEventListener('change', function() {
+        // Encontra a imagem de fundo (primeira img dentro do container da foto de fundo)  
+        const fundoContainer = this.closest('.flex').querySelector('img');
+        if (fundoContainer) {
+            previewImage(this, fundoContainer);
+        }
+    });
+</script>
 </x-app-layout>
