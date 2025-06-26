@@ -186,7 +186,7 @@
                                         class="inline-flex items-center px-6 py-2 bg-green-600 text-white font-medium rounded-lg">
                                         Conectado
                                     </button>
-                                    <a href="{{ route('mensagem.nova', $user->id) }}"
+                                    <a href="{{ route('chat', $user->id) }}"
                                         class="inline-flex items-center px-6 py-2 bg-[#8dafa0] hover:bg-[#e3967d] text-white font-medium rounded-lg transition duration-150 ease-in-out">
                                         Enviar Mensagem
                                     </a>

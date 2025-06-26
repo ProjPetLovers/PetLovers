@@ -36,7 +36,7 @@ INSERT INTO detalhes_usuario (
   (17, 'Daniela','Cardoso',  'Quero apresentar meu coelho',     'https://cdn.pixabay.com/photo/2019/11/21/15/00/woman-4642701_1280.jpg',  '1993-05-19', 'Porto, Portugal',  3,  'https://cdn.pixabay.com/photo/2020/09/05/13/47/landscape-5546579_960_720.jpg'),
   (18, 'Rafael',  'Araújo',   'Meu papagaio fala muito',         'https://cdn.pixabay.com/photo/2020/07/17/22/01/man-5415565_1280.jpg',   '1988-09-09', 'Coimbra, Portugal',1,  'https://cdn.pixabay.com/photo/2020/09/05/13/47/landscape-5546579_960_720.jpg'),
   (19, 'Sabrina',  'Pinto',    'Gosto de passear à tarde',        'https://cdn.pixabay.com/photo/2017/06/15/22/05/woman-2406963_1280.jpg',  '1995-12-25', 'Faro, Portugal',   2,  'https://cdn.pixabay.com/photo/2020/09/05/13/47/landscape-5546579_960_720.jpg'),
-  (20, 'Thiago', 'Correia',  'Adoro socializar meu pet',        'https://cdn.pixabay.com/photo/2024/11/22/13/20/man-9216455_1280.jpg',   '1996-12-05', 'Porto, Portugal',  3,  'https://cdn.pixabay.com/photo/2020/09/05/13/47/landscape-5546579_960_720.jpg');;
+  (20, 'Thiago', 'Correia',  'Adoro socializar meu pet',        'https://cdn.pixabay.com/photo/2024/11/22/13/20/man-9216455_1280.jpg',   '1996-12-05', 'Porto, Portugal',  3,  'https://cdn.pixabay.com/photo/2020/09/05/13/47/landscape-5546579_960_720.jpg');
 
 -- 4) Pets de cada usuário: usuários 1–5 têm 2 pets cada; 6–20 têm 1 pet cada
 INSERT INTO pet (
@@ -45,7 +45,7 @@ INSERT INTO pet (
 ) VALUES
   -- Usuário 1 (2 pets)
   (1,  'Rex',    'Cão',    'Labrador',       'M', 25.00, '2018-06-10', 1, 1, 'https://cdn.pixabay.com/photo/2016/02/11/16/59/dog-1194083_1280.jpg',    'Muito amigável'),
-  (1,  'Mia',    'Gato',   'Siamês',         'F',  4.50, '2020-08-20', 0, 2, 'https://cdn.pixabay.com/photo/2017/02/15/12/12/cat-2068462_1280.jpg,    'Gosta de brincar com crianças'),
+  (1,  'Mia',    'Gato',   'Siamês',         'F',  4.50, '2020-08-20', 0, 2, 'https://cdn.pixabay.com/photo/2017/02/15/12/12/cat-2068462_1280.jpg',    'Gosta de brincar com crianças'),
   -- Usuário 2 (2 pets)
   (2,  'Bunny',  'Coelho', 'Anão',           'F',  2.10, '2019-12-01', 1, 3, 'https://cdn.pixabay.com/photo/2014/06/21/08/43/rabbit-373691_1280.jpg',  'Muito calmo'),
   (2,  'Kiki',   'Papagaio','Amazona',        'M',  0.80, '2017-03-15', 0, 4, 'https://cdn.pixabay.com/photo/2024/12/28/03/20/parrot-9295172_1280.jpg',   'Adora conversar'),
