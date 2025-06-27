@@ -55,7 +55,7 @@
 
                 <a href="{{ route('register') }}"
                     class="px-6 py-3 border border-primary text-light rounded-md
-                          bg-primary hover:text-primary transition w-full sm:w-auto text-center">
+                          bg-primary hover:text-dark transition w-full sm:w-auto text-center">
                     Criar Conta
                 </a>
 
