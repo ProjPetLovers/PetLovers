@@ -8,6 +8,7 @@
                 @php
                     $fundoUrl = $userData['fundo_url'] ?? '';
                     // Remove prefixo 'photo_fundo/' se já existir
+                    //Str::startsWith verifica se a string começa com o prefixo especificado
                     if (Str::startsWith($fundoUrl, 'photo_fundo/')) {
                         $fundoUrl = Str::after($fundoUrl, 'photo_fundo/');
                     }
@@ -15,6 +16,7 @@
                     if (Str::startsWith($userData['fundo_url'], ['http://', 'https://'])) {
                         $fundo = $userData['fundo_url'];
                     } elseif (file_exists(public_path('storage/photo_fundo/' . $fundoUrl))) {
+                        // asset() gera a URL completa para o arquivo
                         $fundo = asset('storage/photo_fundo/' . $fundoUrl);
                     } elseif (file_exists(public_path('photo_fundo/' . $fundoUrl))) {
                         $fundo = asset('photo_fundo/' . $fundoUrl);
@@ -31,6 +33,7 @@
                     <div class=" flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
                         <!-- Foto do Usuário -->
                         <div class="relative">
+                            <!-- !empty retorna true se a variavel for vaza, o ! inverte o resultado -->
                             @if (!empty($userData['foto_url']))
                                 @php
                                     $fotoUrl = $userData['foto_url'];
@@ -160,8 +163,11 @@
 
                             <!-- Conexão e mensagem -->
                             @if (auth()->check() && auth()->id() != $user->id)
+                            {{-- Verifica se o usuário está logado (auth()->check()) e se o perfil exibido NÃO é o dele mesmo (auth()->id() != $user->id) --}}
                                 @if (!$conexao)
+                                 {{-- Se NÃO existe conexão entre os usuários --}}
                                     <form method="POST" action="{{ route('conexao.solicitar', $user->id) }}">
+                                        {{-- Formulário para solicitar conexão --}}
                                         @csrf
                                         <button type="submit"
                                             class="inline-flex items-center px-6 py-2 bg-[#8dafa0] hover:bg-[#e3967d] text-white font-medium rounded-lg transition duration-150 ease-in-out">
@@ -172,7 +178,9 @@
                                         class="inline-flex items-center px-6 py-2 bg-gray-400 text-white font-medium rounded-lg">
                                         Enviar Mensagem
                                     </button>
+                                    {{-- O botão de mensagem fica desabilitado porque só pode enviar mensagem após conexão --}}
                                 @elseif($conexao->status == 'pendente')
+                                {{-- Se já existe uma conexão, mas está pendente de aprovação --}}
                                     <button disabled
                                         class="inline-flex items-center px-6 py-2 bg-gray-400 text-white font-medium rounded-lg">
                                         Solicitação pendente
@@ -181,7 +189,9 @@
                                         class="inline-flex items-center px-6 py-2 bg-gray-400 text-white font-medium rounded-lg">
                                         Enviar Mensagem
                                     </button>
+                                    {{-- Ambos os botões ficam desabilitados até a solicitação ser aceita --}}
                                 @elseif($conexao->status == 'aceito')
+                                {{-- Se a conexão já foi aceita --}}
                                     <button disabled
                                         class="inline-flex items-center px-6 py-2 bg-green-600 text-white font-medium rounded-lg">
                                         Conectado
@@ -190,6 +200,7 @@
                                         class="inline-flex items-center px-6 py-2 bg-[#8dafa0] hover:bg-[#e3967d] text-white font-medium rounded-lg transition duration-150 ease-in-out">
                                         Enviar Mensagem
                                     </a>
+                                    {{-- Agora o botão de mensagem está habilitado e leva para o chat --}}
                                 @endif
                             @endif
 
