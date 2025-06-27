@@ -48,7 +48,7 @@
                         </div>
                         <div class="text-center">
                             <p class="text-lg md:text-2xl font-medium">Sem conversas no momento.</p>
-                            <p class="text-xl text-gray-400 mt-1">Pesquise um contato.</p>
+
                         </div>
                     </div>
                 @endif

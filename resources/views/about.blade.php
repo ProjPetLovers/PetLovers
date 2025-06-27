@@ -64,7 +64,7 @@
                 curiosidades
                 e preferências individuais. Com ferramentas de busca, você encontra facilmente companheiros de
                 brincadeiras por
-                bairro, participa de passeios em grupo e reserva horários em cafés pet-friendly, e futuramente acompanha
+                bairro, marcar passeios em grupo e encontros em cafés pet-friendly, e futuramente acompanha
                 rodadas
                 de adoção para oferecer um lar amoroso a quem precisa. Além disso, contamos com recomendações de
                 especialistas

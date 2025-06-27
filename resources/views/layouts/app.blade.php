@@ -35,7 +35,11 @@
                                 !request()->routeIs('chat') &&
                                 !request()->routeIs('usuario_conexao') &&
                                 !request()->routeIs('profile.show') &&
-                                !request()->routeIs('conexoes_solicitacoes'))
+                                !request()->routeIs('conexoes_solicitacoes') &&
+                                !request()->routeIs('admin.users.index') &&
+                                !request()->routeIs('profile.edit-details') &&
+                                !request()->routeIs('profile.pet.create') &&
+                                !request()->routeIs('profile.pet.edit'))
                             <a href="{{ url('mensagens/index') }}" class=" text-light text-lg font-semibold ml-2">
                                 Mensagens</a>
                         @endif
@@ -46,7 +50,11 @@
                                 !request()->routeIs('chat') &&
                                 !request()->routeIs('usuario_conexao') &&
                                 !request()->routeIs('profile.show') &&
-                                !request()->routeIs('conexoes_solicitacoes'))
+                                !request()->routeIs('conexoes_solicitacoes') &&
+                                !request()->routeIs('admin.users.index') &&
+                                !request()->routeIs('profile.edit-details') &&
+                                !request()->routeIs('profile.pet.create') &&
+                                !request()->routeIs('profile.pet.edit'))
                             <a href="{{ url('usuarios') }}" class="text-light text-lg font-semibold ml-2">
                                 Feed
                             </a>
@@ -56,7 +64,11 @@
                             !request()->routeIs('usuarios') &&
                                 !request()->routeIs('mensagens.index') &&
                                 !request()->routeIs('usuario_conexao') &&
-                                !request()->routeIs('profile.show'))
+                                !request()->routeIs('profile.show') &&
+                                !request()->routeIs('admin.users.index') &&
+                                !request()->routeIs('profile.edit-details') &&
+                                !request()->routeIs('profile.pet.create') &&
+                                !request()->routeIs('profile.pet.edit'))
                             <a href="{{ url('mensagens/index') }}" class="text-light text-lg font-semibold ml-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor" class="w-6 h-6">
