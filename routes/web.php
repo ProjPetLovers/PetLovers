@@ -8,6 +8,7 @@ use App\Http\Controllers\MensagemController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\UsuarioConexaoController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Models\Pet;
 use App\Http\Controllers\AdminUserController;
 
@@ -61,6 +62,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/conexoes/rejeitar/{id}', [UsuarioConexaoController::class, 'rejeitar'])->name('conexoes.rejeitar');
     //Rota para mensagens
     Route::get('/mensagem/nova/{id}', [MensagemController::class, 'nova'])->name('mensagem.nova');
+    
+
 });
 
 // ROTAS DO ADMIN - PROTEGIDAS E COM PREFIXO
@@ -83,6 +86,9 @@ Route::middleware('can:manage-users')
         // Rotas para editar usuário (formulário e atualização)
         Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
         Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('users.update');
+
+        //Rota para o dasboard de métricas do admin
+         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     });
 
 // Rotas de registro em etapas (apenas para usuários não autenticados)
@@ -118,4 +124,8 @@ Route::middleware('auth')->group(function () {
 Route::get('about', function () {
     return view('about');
 })->name('about');
+
+//Rota para FAQ
+    Route::get('/faq', function () {return view('faq');})->name('faq'); 
+    
 require __DIR__ . '/auth.php';

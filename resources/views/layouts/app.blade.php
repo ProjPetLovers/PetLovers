@@ -114,6 +114,9 @@
                                     <x-dropdown-link :href="route('admin.users.index')">
                                         {{ __('Gerenciar Usuários') }}
                                     </x-dropdown-link>
+                                     <x-dropdown-link :href="route('admin.dashboard')">
+                                    {{ __('Dashboard') }}
+                                </x-dropdown-link>
                                 @endcan
 
                                 <x-dropdown-link :href="route('profile.show')">
@@ -126,6 +129,10 @@
 
                                 <x-dropdown-link :href="route('conexoes_solicitacoes')">
                                     {{ __('Conexões') }}
+                                </x-dropdown-link>
+
+                                <x-dropdown-link :href="route('faq')">
+                                    {{ __('FAQ') }}
                                 </x-dropdown-link>
 
                                 <!-- Authentication -->
