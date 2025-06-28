@@ -8,6 +8,7 @@ use App\Http\Controllers\MensagemController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\UsuarioConexaoController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Models\Pet;
 use App\Http\Controllers\AdminUserController;
 
@@ -83,6 +84,9 @@ Route::middleware('can:manage-users')
         // Rotas para editar usuário (formulário e atualização)
         Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
         Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('users.update');
+
+        //Rota para o dasboard de métricas do admin
+         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     });
 
 // Rotas de registro em etapas (apenas para usuários não autenticados)
