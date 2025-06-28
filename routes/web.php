@@ -62,6 +62,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/conexoes/rejeitar/{id}', [UsuarioConexaoController::class, 'rejeitar'])->name('conexoes.rejeitar');
     //Rota para mensagens
     Route::get('/mensagem/nova/{id}', [MensagemController::class, 'nova'])->name('mensagem.nova');
+    
+
 });
 
 // ROTAS DO ADMIN - PROTEGIDAS E COM PREFIXO
@@ -122,4 +124,8 @@ Route::middleware('auth')->group(function () {
 Route::get('about', function () {
     return view('about');
 })->name('about');
+
+//Rota para FAQ
+    Route::get('/faq', function () {return view('faq');})->name('faq'); 
+    
 require __DIR__ . '/auth.php';

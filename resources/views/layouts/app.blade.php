@@ -131,6 +131,10 @@
                                     {{ __('Conexões') }}
                                 </x-dropdown-link>
 
+                                <x-dropdown-link :href="route('faq')">
+                                    {{ __('FAQ') }}
+                                </x-dropdown-link>
+
                                 <!-- Authentication -->
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
