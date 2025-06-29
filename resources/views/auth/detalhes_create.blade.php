@@ -134,11 +134,11 @@
                 </div>
 
                 <!-- Ações -->
-                <div class="flex items-center justify-between mt-8">
-                    <a href="{{ route('register') }}"
+                <div class="flex items-center justify-end mt-8">
+                    <!-- <a href="{{ route('register') }}"
                        class="text-sm text-[#f28a49] hover:underline">
                         {{ __('Voltar') }}
-                    </a>
+                    </a> -->
 
                     <button type="submit"
                             class="px-6 py-2 bg-[#e3967d] text-white rounded-md hover:bg-[#d48067] transition">

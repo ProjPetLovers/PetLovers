@@ -60,7 +60,7 @@ class AdminUserController extends Controller
 public function forceDelete(Request $request, User $user): RedirectResponse
     {
         
-        $user = User::withTrashed()->find($user->id); // Busca o usuário, incluindo soft-deletados
+        // $user = User::withTrashed()->find($user->id); // Busca o usuário, incluindo soft-deletados
 
         if (!$user) {
             return back()->with('error', 'Usuário não encontrado para exclusão permanente.');
@@ -100,15 +100,5 @@ public function forceDelete(Request $request, User $user): RedirectResponse
             return back()->with('success', 'Conta do usuário ' . $user->name . ' desativada com sucesso (soft-deletada).');
         }
 
-    //Edita dados de um usuário
-        public function edit(User $user): View
-            {
-                // Certifique-se de carregar os detalhes do usuário se necessário para a edição
-                $user->load('DetalhesUsuario');
-                return view('admin.users.edit', compact('user')); // Você precisará criar esta view
-            }
-
-
-
-
+   
 }

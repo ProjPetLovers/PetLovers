@@ -81,11 +81,7 @@ Route::middleware('can:manage-users')
         Route::delete('/users/{user}/soft-delete', [AdminUserController::class, 'softDelete'])->name('users.soft-delete');
 
         // Rota para exclusão permanente de um usuário
-        Route::delete('/users/{user}/force-delete', [AdminUserController::class, 'forceDelete'])->name('users.force-delete');
-
-        // Rotas para editar usuário (formulário e atualização)
-        Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
-        Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('users.update');
+        Route::delete('/users/{user}/force-delete', [AdminUserController::class, 'forceDelete'])->withTrashed()->name('users.force-delete');
 
         //Rota para o dasboard de métricas do admin
          Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

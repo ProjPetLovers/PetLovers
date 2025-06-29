@@ -159,11 +159,11 @@
                     <x-input-error :messages="$errors->get('bio')" class="mt-2" />
                 </div>
 
-                <div class="flex items-center justify-between mt-8">
-                    <a href="{{ route('detalhes.create') }}"
+                <div class="flex items-center justify-end mt-8">
+                    <!-- <a href="{{ route('detalhes.create') }}"
                        class="text-sm text-primary hover:underline">
                         {{ __('Voltar') }}
-                    </a>
+                    </a> -->
 
                     <button type="submit"
                             class="px-6 py-2 bg-secondary text-white rounded-md hover:bg-primary transition">
