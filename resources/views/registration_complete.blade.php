@@ -84,11 +84,11 @@
 
             <form method="POST" action="{{ route('registration.complete') }}">
                 @csrf
-                <div class="flex items-center justify-between">
-                    <a href="{{ route('pet.create') }}"
+                <div class="flex items-center justify-end">
+                    <!-- <a href="{{ route('pet.create') }}"
                        class="text-sm text-primary hover:underline">
                         {{ __('Voltar') }}
-                    </a>
+                    </a> -->
                     <button type="submit"
                             class="px-6 py-2 bg-secondary text-white rounded-md hover:bg-primary transition">
                         {{ __('Finalizar Cadastro') }}
