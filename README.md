@@ -12,51 +12,52 @@ ProjPetLovers é uma aplicação web desenvolvida com Laravel, focada em conecta
 
 <h2>Iniciar Sessão</h2>
 
-![Tela inicial](public\imagem\login.jpg)
+![login](https://github.com/user-attachments/assets/7b7dbef3-b91f-4676-affe-3138161ea832)
 
 <h2>Criar Conta</h2>
 
-![Tela inicial](public\imagem\register.jpg)
+![register](https://github.com/user-attachments/assets/d316282f-d742-48dc-bebf-127e1ac3d2a9)
 
 <h2>Detalhe do Usuário</h2>
 
-![Tela inicial](public\imagem\detalhes_create.jpg)
+![detalhes_create](https://github.com/user-attachments/assets/2f47fcc7-b76a-4f8a-b326-377d3fb834c8)
 
 <h2>Detalhe do Pet</h2>
 
-![Tela inicial](public\imagem\pet_create.jpg)
+![pet_create](https://github.com/user-attachments/assets/b240a25c-42d5-45ae-a022-a34f7e056c95)
 
 <h2>Revisar Dados</h2>
 
-![Tela inicial](public\imagem\registration_complete.jpg)
+![registration_complete](https://github.com/user-attachments/assets/bad7aec0-1c5d-49e9-8455-b0726a468aae)
 
 <h2>Feed de Usuários</h2>
 
-![Tela inicial](public\imagem\usuarios.jpg)
+![usuarios](https://github.com/user-attachments/assets/622001b5-2eca-4a75-ba26-84b5ef8c1eef)
 
 <h2>Feed de usuários com layout responsivo</h2>
 
-![Tela inicial](public\imagem\usuarios_responsividade.jpg)
+![usuarios_responsividade](https://github.com/user-attachments/assets/4cca2142-42aa-4f6b-a477-7b1e37e2bc17)
 
 <h2>Feed com usuários cadastrados</h2>
 
-![Tela inicial](public\imagem\usuarios2.jpg)
+![usuarios2](https://github.com/user-attachments/assets/0549d29d-2435-4e53-b3be-40fc92262e1c)
 
 <h2>Tela inicial de mensagens</h2>
 
-![Tela incial](public\imagem\mensagens_index.jpg)
+![mensagens_index](https://github.com/user-attachments/assets/231148d6-e1ed-469f-b35b-58d2f98f7384)
 
 <h2>Tela de mensagens entre usuários</h2>
 
-![Tela inicial](public\imagem\chat.jpg)
+![chat](https://github.com/user-attachments/assets/f6aa6407-16fc-4705-96ab-633da57d694d)
 
 <h2>Tela Administrador</h2>
 
-![Tela incial](public\imagem\admin.jpeg)
+![admin](https://github.com/user-attachments/assets/372aa5e5-3313-493b-897f-44b595e27a72)
 
 <h2>Esquema da base de dados</h2>
 
-![Tela incial](public\imagem\baseDeDados.jpeg)
+![baseDeDados](https://github.com/user-attachments/assets/7dcae855-d525-4764-af66-562db89ff0ad)
+
 
 
 🚀 <b>Tecnologias Utilizadas:</b>
