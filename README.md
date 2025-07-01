@@ -3,6 +3,62 @@
 🐾O Projeto
 ProjPetLovers é uma aplicação web desenvolvida com Laravel, focada em conectar donos de pets, facilitando a socialização, o compartilhamento de experiências e a organização de encontros entre amantes de animais. O sistema permite que usuários criem perfis, cadastrem seus pets, enviem mensagens, troquem informações e construam uma rede social amigável e segura para todos os tipos de pets.
 <br> <br>
+
+<b> <h1> Screenshots </b> </h1>
+
+<h2>Tela Inicial</h2>
+
+![Tela inicial](public\imagem\welcome.jpg)
+
+<h2>Iniciar Sessão</h2>
+
+![Tela inicial](public\imagem\login.jpg)
+
+<h2>Criar Conta</h2>
+
+![Tela inicial](public\imagem\register.jpg)
+
+<h2>Detalhe do Usuário</h2>
+
+![Tela inicial](public\imagem\detalhes_create.jpg)
+
+<h2>Detalhe do Pet</h2>
+
+![Tela inicial](public\imagem\pet_create.jpg)
+
+<h2>Revisar Dados</h2>
+
+![Tela inicial](public\imagem\registration_complete.jpg)
+
+<h2>Feed de Usuários</h2>
+
+![Tela inicial](public\imagem\usuarios.jpg)
+
+<h2>Feed de usuários com layout responsivo</h2>
+
+![Tela inicial](public\imagem\usuarios_responsividade.jpg)
+
+<h2>Feed com usuários cadastrados</h2>
+
+![Tela inicial](public\imagem\usuarios2.jpg)
+
+<h2>Tela inicial de mensagens</h2>
+
+![Tela incial](public\imagem\mensagens_index.jpg)
+
+<h2>Tela de mensagens entre usuários</h2>
+
+![Tela inicial](public\imagem\chat.jpg)
+
+<h2>Tela Administrador</h2>
+
+![Tela incial](public\imagem\admin.jpeg)
+
+<h2>Esquema da base de dados</h2>
+
+![Tela incial](public\imagem\baseDeDados.jpeg)
+
+
 🚀 <b>Tecnologias Utilizadas:</b>
 <br>
 Laravel ^12.0 — Framework PHP para desenvolvimento web <br>
