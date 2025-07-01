@@ -7,8 +7,7 @@ ProjPetLovers é uma aplicação web desenvolvida com Laravel, focada em conecta
 <b> <h1> Screenshots </b> </h1>
 
 <h2>Tela Inicial</h2>
-
-![Tela inicial](public\imagem\welcome.jpg)
+![welcome](https://github.com/user-attachments/assets/1c0dedf0-36b3-4382-aa4a-8d6b5475ee4e)
 
 <h2>Iniciar Sessão</h2>
 
