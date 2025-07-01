@@ -26,8 +26,11 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16">
                     {{-- Logo / Nome da App --}}
-                    <div class="flex-shrink-0 flex items-center gap-4"">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                    <div class="flex-shrink-0 flex items-center gap-4">
+                        <a href="{{ url('usuarios') }}">
+                            <x-application-logo
+                                class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        </a>
 
 
                         @if (
@@ -39,7 +42,9 @@
                                 !request()->routeIs('admin.users.index') &&
                                 !request()->routeIs('profile.edit-details') &&
                                 !request()->routeIs('profile.pet.create') &&
-                                !request()->routeIs('profile.pet.edit'))
+                                !request()->routeIs('profile.pet.edit') &&
+                                !request()->routeIs('admin.dashboard') &&
+                                !request()->routeIs('faq'))
                             <a href="{{ url('mensagens/index') }}" class=" text-light text-lg font-semibold ml-2">
                                 Mensagens</a>
                         @endif
@@ -54,7 +59,9 @@
                                 !request()->routeIs('admin.users.index') &&
                                 !request()->routeIs('profile.edit-details') &&
                                 !request()->routeIs('profile.pet.create') &&
-                                !request()->routeIs('profile.pet.edit'))
+                                !request()->routeIs('profile.pet.edit') &&
+                                !request()->routeIs('admin.dashboard') &&
+                                !request()->routeIs('faq'))
                             <a href="{{ url('usuarios') }}" class="text-light text-lg font-semibold ml-2">
                                 Feed
                             </a>
@@ -68,7 +75,9 @@
                                 !request()->routeIs('admin.users.index') &&
                                 !request()->routeIs('profile.edit-details') &&
                                 !request()->routeIs('profile.pet.create') &&
-                                !request()->routeIs('profile.pet.edit'))
+                                !request()->routeIs('profile.pet.edit') &&
+                                !request()->routeIs('admin.dashboard') &&
+                                !request()->routeIs('faq'))
                             <a href="{{ url('mensagens/index') }}" class="text-light text-lg font-semibold ml-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor" class="w-6 h-6">
@@ -114,9 +123,9 @@
                                     <x-dropdown-link :href="route('admin.users.index')">
                                         {{ __('Gerenciar Usuários') }}
                                     </x-dropdown-link>
-                                     <x-dropdown-link :href="route('admin.dashboard')">
-                                    {{ __('Dashboard') }}
-                                </x-dropdown-link>
+                                    <x-dropdown-link :href="route('admin.dashboard')">
+                                        {{ __('Dashboard') }}
+                                    </x-dropdown-link>
                                 @endcan
 
                                 <x-dropdown-link :href="route('profile.show')">
