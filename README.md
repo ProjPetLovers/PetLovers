@@ -59,6 +59,7 @@ ProjPetLovers é uma aplicação web desenvolvida com Laravel, focada em conecta
 ![admin](https://github.com/user-attachments/assets/372aa5e5-3313-493b-897f-44b595e27a72)
 
 <h2>Dashboard de métricas Administrador</h2>
+
 ![DashboardAdmin](https://github.com/user-attachments/assets/3866d6a6-9e0b-47c7-b554-9e54a1443e85)
 
 <h2>Esquema da base de dados</h2>
