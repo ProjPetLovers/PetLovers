@@ -30,6 +30,11 @@
                 <div class="border-b p-4 flex items-center space-x-4">
                 @php
                     $foto = $receiver->detalhesUsuario->foto;
+                    if (Str::startsWith($foto, 'http')) {
+                        $foto = $receiver->detalhesUsuario->foto;
+                    } else {
+                        $foto = asset('storage/' . $receiver->detalhesUsuario->foto);
+                    }
                 @endphp
                     <img src="{{ Str::startsWith ($foto, 'http') ? $foto : asset('storage/'. $receiver -> foto)}}"
                         alt= {{ $receiver->name }}
