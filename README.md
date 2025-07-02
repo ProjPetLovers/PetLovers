@@ -36,11 +36,15 @@ ProjPetLovers é uma aplicação web desenvolvida com Laravel, focada em conecta
 
 <h2>Feed de usuários com layout responsivo</h2>
 
-![usuarios_responsividade](https://github.com/user-attachments/assets/4cca2142-42aa-4f6b-a477-7b1e37e2bc17)
+![FeedResponsivo](https://github.com/user-attachments/assets/c88bc861-8194-4fc2-b4b2-1da310857ed7)
 
 <h2>Feed com usuários cadastrados</h2>
 
 ![usuarios2](https://github.com/user-attachments/assets/0549d29d-2435-4e53-b3be-40fc92262e1c)
+
+<h2>Tela com pedido de conexão</h2>
+
+![PedidosConexãoRecebidos](https://github.com/user-attachments/assets/934b5b92-8179-4657-9f76-3fce331f477d)
 
 <h2>Tela inicial de mensagens</h2>
 
@@ -53,6 +57,10 @@ ProjPetLovers é uma aplicação web desenvolvida com Laravel, focada em conecta
 <h2>Tela Administrador</h2>
 
 ![admin](https://github.com/user-attachments/assets/372aa5e5-3313-493b-897f-44b595e27a72)
+
+<h2>Dashboard de métricas Administrador</h2>
+
+![DashboardAdmin](https://github.com/user-attachments/assets/3866d6a6-9e0b-47c7-b554-9e54a1443e85)
 
 <h2>Esquema da base de dados</h2>
 
@@ -91,7 +99,7 @@ MySQL ou MariaDB <br>
 Passos para instalação
 ```bash
 # Clone o repositório:
-git clone https://github.com/fabinascimento/PetLovers
+git clone https://github.com/ProjPetLovers/PetLovers
 cd PetLovers
 
 # Instale as dependências do backend:
