@@ -99,7 +99,7 @@ MySQL ou MariaDB <br>
 Passos para instalação
 ```bash
 # Clone o repositório:
-git clone https://github.com/fabinascimento/PetLovers
+git clone https://github.com/ProjPetLovers/PetLovers
 cd PetLovers
 
 # Instale as dependências do backend:
